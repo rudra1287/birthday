@@ -609,18 +609,20 @@ function App() {
                     className="gift-message"
                   >
                     <span className="simple-icon">✦</span>
-                    <h3>One more little reminder...</h3>
-                    <p>
-                      You deserve every beautiful thing coming your way.
+                    <h3>Your surprise is uploading...</h3>
+
+                    <div
+                      className="surprise-progress"
+                      role="progressbar"
+                      aria-label="Surprise loading animation"
+                    >
+                      <span className="surprise-progress-fill" />
+                      <span className="surprise-progress-shine" />
+                    </div>
+
+                    <p className="surprise-birthday-wish">
+                      Wishing you a Happy Birthday.
                     </p>
-                    <p>
-                      Thank you for being such a good friend, a supportive
-                      sister, and a wonderful classmate.
-                    </p>
-                    <p>
-                      I&apos;m truly lucky to have you in my life.
-                    </p>
-                    <strong>Never stop being you.</strong>
                   </div>
                 )}
               </div>
