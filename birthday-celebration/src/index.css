@@ -9979,3 +9979,247 @@ body {
   }
 }
 
+
+/* =========================================================
+   GIFT SCREEN — CENTERED NEON PRESENT
+   ========================================================= */
+
+.gift-section.gift-is-closed {
+  position: relative !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  isolation: isolate;
+}
+
+/* Hide the reveal content until the present is clicked */
+.gift-section.gift-is-closed .section-heading,
+.gift-section.gift-is-closed .stage-animation,
+.gift-section.gift-is-closed .gift-next {
+  display: none !important;
+}
+
+/* Center the gift in the viewport */
+.gift-section.gift-is-closed .gift-box {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  flex: 0 0 auto !important;
+  width: 300px !important;
+  height: 300px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: block !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+  animation: centered-gift-float 3s ease-in-out infinite !important;
+  cursor: pointer !important;
+  z-index: 2 !important;
+}
+
+/* Purple neon halo */
+.gift-section.gift-is-closed .gift-glow {
+  position: absolute !important;
+  z-index: -1 !important;
+  left: 50% !important;
+  top: 49% !important;
+  width: 380px !important;
+  height: 380px !important;
+  transform: translate(-50%, -50%) !important;
+  border-radius: 50% !important;
+  background: radial-gradient(
+    circle,
+    rgba(178, 44, 255, .38) 0%,
+    rgba(130, 38, 255, .2) 35%,
+    rgba(80, 30, 180, .07) 60%,
+    transparent 72%
+  ) !important;
+  filter: blur(20px) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Main gift body */
+.gift-section.gift-is-closed .gift-body {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: 250px !important;
+  height: 170px !important;
+  transform: translate(-50%, -28%) !important;
+  overflow: visible !important;
+  border: 2px solid rgba(221, 170, 255, .75) !important;
+  border-radius: 9px !important;
+  background: linear-gradient(
+    110deg,
+    #d36aff 0%,
+    #a52bff 42%,
+    #6a20f7 100%
+  ) !important;
+  box-shadow:
+    inset 12px 0 24px rgba(255, 255, 255, .13),
+    inset -12px 0 24px rgba(54, 0, 140, .2),
+    0 0 25px rgba(178, 60, 255, .38) !important;
+}
+
+/* Gold ribbon running down the box */
+.gift-section.gift-is-closed .gift-body .ribbon.vertical {
+  position: absolute !important;
+  left: 50% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 36px !important;
+  height: auto !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(
+    90deg,
+    #ffcf61,
+    #fff0a1 45%,
+    #ffc54a
+  ) !important;
+  box-shadow: 0 0 12px rgba(255, 210, 90, .2) !important;
+  z-index: 2 !important;
+}
+
+/* Gift lid */
+.gift-section.gift-is-closed .gift-lid {
+  position: absolute !important;
+  left: 50% !important;
+  top: calc(50% - 26px) !important;
+  width: 278px !important;
+  height: 62px !important;
+  transform: translate(-50%, -50%) !important;
+  transform-origin: center bottom !important;
+  overflow: visible !important;
+  border: 2px solid rgba(235, 192, 255, .8) !important;
+  border-radius: 9px !important;
+  background: linear-gradient(
+    180deg,
+    #d891ff 0%,
+    #b84cff 55%,
+    #8524ed 100%
+  ) !important;
+  box-shadow:
+    inset 0 7px 10px rgba(255, 255, 255, .12),
+    0 8px 22px rgba(143, 35, 255, .24) !important;
+  z-index: 4 !important;
+}
+
+/* Gold ribbon across the lid */
+.gift-section.gift-is-closed .gift-lid .ribbon.horizontal {
+  position: absolute !important;
+  left: 0 !important;
+  top: 20px !important;
+  width: 100% !important;
+  height: 20px !important;
+  background: linear-gradient(
+    180deg,
+    #fff0a4,
+    #ffcc54
+  ) !important;
+  box-shadow: 0 0 8px rgba(255, 213, 98, .25) !important;
+}
+
+/* Remove emoji so the box stays clean and symmetrical */
+.gift-section.gift-is-closed .gift-emoji {
+  display: none !important;
+}
+
+/* Bow loops */
+.gift-section.gift-is-closed .gift-lid::before,
+.gift-section.gift-is-closed .gift-lid::after {
+  content: "" !important;
+  position: absolute !important;
+  top: -38px !important;
+  width: 72px !important;
+  height: 45px !important;
+  border: 3px solid #ffd77a !important;
+  background: linear-gradient(145deg, #ffcf66, #ff8dcb 75%) !important;
+  box-shadow: 0 0 16px rgba(255, 128, 226, .24) !important;
+  z-index: 5 !important;
+}
+
+.gift-section.gift-is-closed .gift-lid::before {
+  left: calc(50% - 66px) !important;
+  border-radius: 75% 20% 65% 30% !important;
+  transform: rotate(24deg) !important;
+}
+
+.gift-section.gift-is-closed .gift-lid::after {
+  right: calc(50% - 66px) !important;
+  border-radius: 20% 75% 30% 65% !important;
+  transform: rotate(-24deg) !important;
+}
+
+/* Click label below the present */
+.gift-section.gift-is-closed .gift-label {
+  position: absolute !important;
+  left: 50% !important;
+  top: calc(100% + 22px) !important;
+  bottom: auto !important;
+  transform: translateX(-50%) !important;
+  display: block !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+  color: #d7c2f4 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .22em !important;
+  text-shadow: 0 0 15px rgba(192, 111, 255, .45) !important;
+  animation: gift-label-pulse 2s ease-in-out infinite !important;
+  z-index: 6 !important;
+}
+
+/* Open state keeps the full-screen layout */
+.gift-section.gift-is-open {
+  justify-content: flex-start !important;
+  padding-top: 26px !important;
+  overflow: hidden !important;
+}
+
+@keyframes centered-gift-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+
+@keyframes gift-label-pulse {
+  0%, 100% { opacity: .65; }
+  50% { opacity: 1; }
+}
+
+/* Smaller desktop and laptop screens */
+@media (max-width: 700px) {
+  .gift-section.gift-is-closed .gift-box {
+    transform: scale(.78) !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 650px) {
+  .gift-section.gift-is-closed .gift-box {
+    transform: scale(.78) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gift-section.gift-is-closed .gift-box,
+  .gift-section.gift-is-closed .gift-label {
+    animation: none !important;
+  }
+}
+

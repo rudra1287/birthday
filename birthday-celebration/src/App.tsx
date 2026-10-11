@@ -566,7 +566,7 @@ function App() {
 {stage === "gift" && (
             <section
               key="gift"
-              className="gift-section screen-stage"
+              className={`gift-section screen-stage ${giftOpen ? "gift-is-open" : "gift-is-closed"}`}
             >
               <div
                 className="section-heading"
