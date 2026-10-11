@@ -1,0 +1,9842 @@
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+  background: #05030b;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #05030b;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(131, 58, 180, 0.22), transparent 34%),
+    radial-gradient(circle at 10% 50%, rgba(0, 212, 255, 0.07), transparent 28%),
+    #05030b;
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.ambient {
+  position: fixed;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.14;
+}
+
+.ambient-one {
+  top: 15%;
+  left: -300px;
+  background: #9b5cff;
+}
+
+.ambient-two {
+  right: -300px;
+  top: 55%;
+  background: #00d9ff;
+}
+
+.particle {
+  position: fixed;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.4;
+  box-shadow: 0 0 12px #fff;
+  animation: floatParticle linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
+  50% { transform: translateY(-35px) scale(1.4); opacity: 0.65; }
+}
+
+.sound-button {
+  position: fixed;
+  right: 28px;
+  top: 25px;
+  z-index: 50;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(10, 7, 18, .65);
+  backdrop-filter: blur(15px);
+  color: rgba(255,255,255,.7);
+  border-radius: 100px;
+  padding: 9px 13px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  letter-spacing: .16em;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding: 80px 24px;
+}
+
+.intro {
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(151, 76, 255, .11), transparent 28%),
+    radial-gradient(circle at 50% 100%, rgba(255, 0, 153, .08), transparent 40%);
+}
+
+.intro-content {
+  position: relative;
+  max-width: 750px;
+}
+
+.eyebrow,
+.section-label,
+.small-caps {
+  font-size: 10px;
+  letter-spacing: .32em;
+  color: rgba(255,255,255,.48);
+  font-weight: 600;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin-bottom: 40px;
+}
+
+.eyebrow-line {
+  width: 35px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.4));
+}
+
+.eyebrow-line:last-child {
+  transform: rotate(180deg);
+}
+
+.intro h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(72px, 13vw, 170px);
+  line-height: .8;
+  font-weight: 500;
+  letter-spacing: -.07em;
+  margin: 0;
+}
+
+.intro h1 em {
+  color: #c68cff;
+  text-shadow: 0 0 60px rgba(190, 110, 255, .45);
+}
+
+.intro-text {
+  color: rgba(255,255,255,.55);
+  line-height: 1.9;
+  margin: 42px auto 30px;
+  font-size: 15px;
+}
+
+.primary-button,
+.wish-button,
+.ghost-button,
+.replay-button {
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.primary-button {
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #a86aff, #ff4fba);
+  box-shadow: 0 15px 50px rgba(177, 74, 255, .22);
+  font-size: 10px;
+  letter-spacing: .2em;
+  font-weight: 600;
+}
+
+.tiny-hint {
+  font-size: 10px;
+  color: rgba(255,255,255,.28);
+  margin-top: 22px;
+}
+
+.floating-star {
+  position: absolute;
+  color: #c78cff;
+  filter: drop-shadow(0 0 15px rgba(198,140,255,.6));
+}
+
+.star-a {
+  left: 2%;
+  top: 12%;
+}
+
+.star-b {
+  right: 5%;
+  bottom: 10%;
+  color: #5cecff;
+}
+
+.reveal-section {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(165, 79, 255, .18), transparent 25%),
+    radial-gradient(circle at 50% 70%, rgba(255, 57, 165, .08), transparent 30%);
+  text-align: center;
+}
+
+.reveal-content {
+  position: relative;
+}
+
+.small-caps {
+  color: #a987c6;
+}
+
+.reveal-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -.04em;
+  margin: 25px 0;
+}
+
+.reveal-content h2 span {
+  font-style: italic;
+  color: #dba9ff;
+  text-shadow: 0 0 40px rgba(199, 113, 255, .35);
+}
+
+.divider,
+.final-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  color: #ff76bd;
+  margin: 35px 0;
+}
+
+.divider i {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,118,189,.7));
+}
+
+.divider i:last-of-type {
+  transform: rotate(180deg);
+}
+
+.reveal-content h3 {
+  font-size: 13px;
+  letter-spacing: .3em;
+  color: rgba(255,255,255,.6);
+}
+
+.reveal-content h3 strong {
+  display: block;
+  margin-top: 13px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 7vw, 85px);
+  letter-spacing: -.04em;
+  color: white;
+  text-shadow: 0 0 45px rgba(255,255,255,.15);
+}
+
+.scroll-note {
+  margin-top: 70px;
+  color: rgba(255,255,255,.25);
+  font-size: 9px;
+  letter-spacing: .25em;
+}
+
+.orbit {
+  position: absolute;
+  width: 390px;
+  height: 390px;
+  border: 1px solid rgba(206,137,255,.1);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+
+.orbit::before,
+.orbit::after {
+  content: "";
+  position: absolute;
+  inset: 35px;
+  border: 1px solid rgba(0,220,255,.07);
+  border-radius: 50%;
+}
+
+.orbit::after {
+  inset: 80px;
+  border-color: rgba(255,89,189,.07);
+}
+
+.message-section,
+.gift-section,
+.wish-section,
+.final-section {
+  padding: 150px 24px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.message-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-label {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.message-card {
+  width: min(720px, 100%);
+  padding: clamp(35px, 6vw, 70px);
+  position: relative;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  box-shadow: 0 30px 100px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.08);
+  backdrop-filter: blur(22px);
+}
+
+.quote-mark {
+  position: absolute;
+  top: 20px;
+  left: 35px;
+  font-family: Georgia, serif;
+  font-size: 80px;
+  color: rgba(210,145,255,.18);
+}
+
+.message-card p {
+  color: rgba(255,255,255,.58);
+  line-height: 1.9;
+  font-size: 15px;
+  margin: 25px 0;
+}
+
+.message-card .message-lead {
+  font-family: "Playfair Display", serif;
+  color: rgba(255,255,255,.9);
+  font-size: clamp(22px, 3vw, 29px);
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+.message-card .final-line {
+  color: rgba(255,255,255,.85);
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  margin-top: 40px;
+}
+
+.final-line span {
+  color: #ff88c5;
+}
+
+.ghost-button {
+  margin-top: 30px;
+  background: transparent;
+  color: #d5a4ff;
+  font-size: 10px;
+  letter-spacing: .18em;
+  padding: 0;
+}
+
+.gift-section {
+  text-align: center;
+  min-height: 800px;
+}
+
+.section-heading h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  margin: 20px 0 12px;
+}
+
+.section-heading > p:last-child {
+  color: rgba(255,255,255,.35);
+}
+
+.gift-box {
+  width: 220px;
+  height: 250px;
+  background: transparent;
+  border: 0;
+  position: relative;
+  margin: 100px auto 45px;
+  cursor: pointer;
+}
+
+.gift-body {
+  position: absolute;
+  left: 25px;
+  bottom: 10px;
+  width: 170px;
+  height: 135px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #b76bff, #7036b8);
+  box-shadow: 0 25px 70px rgba(164,75,255,.3);
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,.8);
+}
+
+.gift-lid {
+  position: absolute;
+  left: 14px;
+  top: 76px;
+  width: 192px;
+  height: 47px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #d18aff, #914de3);
+  z-index: 2;
+  transition: .7s cubic-bezier(.2,.8,.2,1);
+  box-shadow: 0 10px 30px rgba(176,77,255,.2);
+}
+
+.gift-box.opened .gift-lid {
+  transform: translateY(-80px) rotate(-7deg);
+  opacity: .75;
+}
+
+.ribbon {
+  position: absolute;
+  background: #ffd67c;
+  box-shadow: 0 0 15px rgba(255,214,124,.25);
+}
+
+.ribbon.horizontal {
+  height: 12px;
+  width: 100%;
+  left: 0;
+  top: 17px;
+}
+
+.ribbon.vertical {
+  width: 17px;
+  height: 100%;
+  left: calc(50% - 8px);
+  top: 0;
+}
+
+.gift-body svg {
+  opacity: .45;
+}
+
+.gift-label {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+  font-size: 9px;
+  letter-spacing: .3em;
+  color: rgba(255,255,255,.3);
+}
+
+.gift-glow {
+  position: absolute;
+  width: 220px;
+  height: 180px;
+  border-radius: 50%;
+  background: #ad55ff;
+  filter: blur(65px);
+  opacity: .2;
+}
+
+.gift-message {
+  width: min(530px, 100%);
+  margin: 20px auto;
+  padding: 35px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+}
+
+.gift-message svg {
+  color: #ffd47a;
+}
+
+.gift-message h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.gift-message p {
+  color: rgba(255,255,255,.55);
+  line-height: 1.8;
+}
+
+.gift-message strong {
+  color: #d7a3ff;
+}
+
+.more-hint {
+  color: #d6a6ff;
+}
+
+.wish-section {
+  max-width: none;
+  min-height: 950px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(116,68,194,.17), transparent 27%),
+    linear-gradient(180deg, transparent, rgba(24,14,50,.5), transparent);
+}
+
+.wish-content {
+  position: relative;
+  z-index: 2;
+}
+
+.wish-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(60px, 10vw, 115px);
+  font-weight: 500;
+  font-style: italic;
+  margin: 18px 0;
+  letter-spacing: -.06em;
+}
+
+.wish-subtitle {
+  color: rgba(255,255,255,.45);
+  line-height: 1.8;
+}
+
+.stars-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.stars-bg span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 8px white;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: .8; transform: scale(1.6); }
+}
+
+.cake {
+  width: 250px;
+  height: 220px;
+  margin: 60px auto 35px;
+  position: relative;
+}
+
+.cake-bottom,
+.cake-middle,
+.cake-top {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff75b9, #8b55dd);
+  box-shadow: 0 10px 35px rgba(198,78,185,.25);
+}
+
+.cake-bottom {
+  bottom: 25px;
+  width: 205px;
+  height: 70px;
+}
+
+.cake-middle {
+  bottom: 78px;
+  width: 180px;
+  height: 55px;
+}
+
+.cake-top {
+  bottom: 120px;
+  width: 145px;
+  height: 48px;
+}
+
+.plate {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.candles {
+  position: absolute;
+  bottom: 153px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 4;
+}
+
+.candles i {
+  width: 9px;
+  height: 45px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(-45deg, #fff, #fff 5px, #ff91c9 5px, #ff91c9 9px);
+}
+
+.flames {
+  position: absolute;
+  bottom: 194px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 112px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+  transition: .4s;
+}
+
+.flame {
+  width: 10px;
+  height: 18px;
+  background: linear-gradient(#fff6a3, #ff9b30);
+  border-radius: 50% 50% 50% 10%;
+  transform: rotate(45deg);
+  box-shadow: 0 0 18px #ffb34d;
+  animation: flicker .35s infinite alternate;
+}
+
+.cake.wished .flames {
+  opacity: 0;
+  transform: translateX(-50%) scale(.2);
+}
+
+@keyframes flicker {
+  from { transform: rotate(42deg) scale(.9); }
+  to { transform: rotate(48deg) scale(1.1); }
+}
+
+.wish-button {
+  background: linear-gradient(135deg, #ffd67a, #ff87c2);
+  color: #201025;
+  padding: 15px 25px;
+  border-radius: 100px;
+  font-size: 10px;
+  letter-spacing: .18em;
+  font-weight: 700;
+  box-shadow: 0 15px 45px rgba(255,133,184,.2);
+}
+
+.wish-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.wish-success svg {
+  color: #ffd67a;
+}
+
+.wish-success strong {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.wish-success span {
+  color: rgba(255,255,255,.4);
+  font-size: 13px;
+}
+
+.final-section {
+  min-height: 900px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.final-card {
+  width: min(800px, 100%);
+  padding: 50px 20px;
+}
+
+.final-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 35px;
+  display: grid;
+  place-items: center;
+  color: #ff8bc4;
+  border: 1px solid rgba(255,139,196,.2);
+  border-radius: 50%;
+  box-shadow: 0 0 45px rgba(255,87,177,.12);
+}
+
+.final-card h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 6vw, 70px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.05em;
+  margin: 25px 0;
+}
+
+.final-card h2 span {
+  color: #d6a4ff;
+  font-style: italic;
+}
+
+.final-divider {
+  margin: 45px auto;
+}
+
+.final-divider::before,
+.final-divider::after {
+  content: "";
+  width: 65px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+}
+
+.keep {
+  color: rgba(255,255,255,.65);
+  line-height: 2;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+}
+
+.final-card h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 31px;
+  margin-top: 50px;
+}
+
+.final-card h3 span {
+  color: #ff8bc4;
+}
+
+.signature {
+  color: rgba(255,255,255,.32);
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 35px 0;
+}
+
+.replay-button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.6);
+  padding: 13px 19px;
+  border-radius: 100px;
+  font-size: 9px;
+  letter-spacing: .18em;
+}
+
+footer {
+  text-align: center;
+  padding: 0 20px 35px;
+  color: rgba(255,255,255,.2);
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+footer svg {
+  vertical-align: middle;
+  color: #ff7ebd;
+}
+
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  top: -20px;
+  width: 7px;
+  height: 13px;
+  border-radius: 2px;
+  background: #ff78bd;
+  animation: confettiFall 2.1s cubic-bezier(.1,.7,.3,1) forwards;
+}
+
+.confetti:nth-child(3n) { background: #c68cff; }
+.confetti:nth-child(4n) { background: #5cecff; }
+.confetti:nth-child(5n) { background: #ffd67a; }
+
+@keyframes confettiFall {
+  to {
+    top: 110%;
+    transform: translateX(calc((50vw - 50%) * .3)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .sound-button {
+    top: 15px;
+    right: 15px;
+  }
+
+  .sound-button span {
+    display: none;
+  }
+
+  .message-section,
+  .gift-section,
+  .wish-section,
+  .final-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .orbit {
+    width: 280px;
+    height: 280px;
+  }
+
+  .gift-section {
+    min-height: 700px;
+  }
+
+  .wish-section {
+    min-height: 800px;
+  }
+
+  .cake {
+    transform: scale(.85);
+  }
+}
+
+/* =========================================================
+   BIRTHDAY CAKE CUTTING EXPERIENCE
+   ========================================================= */
+
+.cake-cut-screen {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 100px 24px 70px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(168, 85, 247, .18), transparent 28%),
+    radial-gradient(circle at 20% 70%, rgba(34, 211, 238, .08), transparent 25%),
+    radial-gradient(circle at 80% 25%, rgba(236, 72, 153, .1), transparent 25%),
+    #05030b;
+}
+
+.cake-cut-screen::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.05);
+  box-shadow:
+    0 0 100px rgba(168,85,247,.12),
+    inset 0 0 100px rgba(168,85,247,.06);
+  animation: cakeOrbit 12s linear infinite;
+}
+
+@keyframes cakeOrbit {
+  from { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.04); }
+  to { transform: rotate(360deg) scale(1); }
+}
+
+.cake-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cake-stars span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
+  opacity: .5;
+  box-shadow: 0 0 10px rgba(255,255,255,.9);
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .15; transform: scale(.7); }
+  50% { opacity: .9; transform: scale(1.5); }
+}
+
+.cake-intro {
+  position: relative;
+  z-index: 2;
+  width: min(900px, 100%);
+  text-align: center;
+}
+
+.cake-intro h2 {
+  margin: 10px 0 12px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: .95;
+  letter-spacing: -.04em;
+}
+
+.cake-intro h2 span {
+  background: linear-gradient(90deg, #c084fc, #f472b6, #67e8f9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cake-subtitle {
+  color: rgba(255,255,255,.58);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 auto 20px;
+}
+
+.birthday-cake {
+  position: relative;
+  width: 310px;
+  height: 285px;
+  margin: 5px auto 5px;
+  transform: scale(.9);
+  transition: transform .5s ease;
+}
+
+.birthday-cake:hover {
+  transform: scale(.94);
+}
+
+.cake-plate {
+  position: absolute;
+  width: 300px;
+  height: 30px;
+  left: 5px;
+  bottom: 28px;
+  border-radius: 50%;
+  background: linear-gradient(#f7f3ff, #b9a9d8);
+  box-shadow: 0 12px 35px rgba(168,85,247,.28);
+}
+
+.cake-layer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  box-shadow:
+    inset 0 -10px 0 rgba(0,0,0,.08),
+    0 8px 18px rgba(0,0,0,.25);
+}
+
+.cake-bottom-layer {
+  bottom: 49px;
+  width: 245px;
+  height: 78px;
+  border-radius: 16px 16px 22px 22px;
+  background: linear-gradient(135deg, #d946ef, #9333ea);
+}
+
+.cake-main-layer {
+  bottom: 112px;
+  width: 215px;
+  height: 65px;
+  border-radius: 15px 15px 18px 18px;
+  background: linear-gradient(135deg, #fb7185, #ec4899);
+}
+
+.cake-top-layer {
+  bottom: 165px;
+  width: 185px;
+  height: 58px;
+  border-radius: 50% 50% 15px 15px;
+  background: linear-gradient(135deg, #f9a8d4, #f472b6);
+}
+
+.icing {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 22px;
+  background: #fff7fb;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(255,255,255,.18);
+}
+
+.icing::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 28px;
+  right: 32px;
+  top: 10px;
+  border-radius: 0 0 15px 15px;
+  background: #fff7fb;
+}
+
+.cream-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10px;
+  height: 11px;
+  background: rgba(255,247,251,.9);
+}
+
+.cake-candle {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 216px;
+  width: 14px;
+  height: 52px;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #67e8f9 0 7px,
+    #fff 7px 14px
+  );
+  box-shadow: 0 0 16px rgba(103,232,249,.5);
+}
+
+.cake-candle span {
+  position: absolute;
+  width: 15px;
+  height: 22px;
+  left: 0;
+  top: -20px;
+  border-radius: 50% 50% 50% 50%;
+  background: #fbbf24;
+  box-shadow: 0 0 22px #f59e0b;
+  animation: flame 1s ease-in-out infinite alternate;
+}
+
+@keyframes flame {
+  from { transform: scale(.85) translateY(2px); }
+  to { transform: scale(1.1) translateY(-2px); }
+}
+
+.cake-knife {
+  position: absolute;
+  z-index: 8;
+  width: 105px;
+  height: 8px;
+  background: linear-gradient(90deg, #fff, #9ca3af);
+  border-radius: 10px;
+  top: 125px;
+  right: -35px;
+  transform: rotate(42deg);
+  transform-origin: left center;
+  opacity: .9;
+  transition: transform .9s cubic-bezier(.2,.8,.2,1), right .9s ease;
+  filter: drop-shadow(0 0 7px rgba(255,255,255,.25));
+}
+
+.cake-knife::after {
+  content: "";
+  position: absolute;
+  right: -38px;
+  top: -4px;
+  width: 45px;
+  height: 16px;
+  border-radius: 8px;
+  background: #27233b;
+}
+
+.cake-is-cut .cake-knife {
+  right: 75px;
+  transform: rotate(108deg);
+}
+
+.cake-is-cut .cake-top-layer {
+  animation: cakeSplitLeft .9s .15s forwards;
+}
+
+.cake-is-cut .cake-main-layer {
+  animation: cakeSplitRight .9s .15s forwards;
+}
+
+@keyframes cakeSplitLeft {
+  to {
+    transform: translateX(calc(-50% - 12px)) rotate(-2deg);
+  }
+}
+
+@keyframes cakeSplitRight {
+  to {
+    transform: translateX(calc(-50% + 12px)) rotate(2deg);
+  }
+}
+
+.cut-cake-button,
+.cake-next-button {
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: .12em;
+  border-radius: 999px;
+  padding: 17px 28px;
+  background: linear-gradient(100deg, #9333ea, #ec4899);
+  box-shadow:
+    0 10px 35px rgba(168,85,247,.3),
+    inset 0 1px 0 rgba(255,255,255,.25);
+  transition: .25s ease;
+}
+
+.cut-cake-button:hover,
+.cake-next-button:hover {
+  box-shadow:
+    0 15px 45px rgba(236,72,153,.35),
+    0 0 30px rgba(168,85,247,.2);
+}
+
+.cut-cake-button span {
+  margin-right: 10px;
+}
+
+.cake-cut-complete {
+  margin-top: 5px;
+}
+
+.celebration-burst {
+  font-size: 25px;
+  letter-spacing: 12px;
+  margin-bottom: 3px;
+  animation: burstPop .7s ease-out;
+}
+
+@keyframes burstPop {
+  0% { transform: scale(.4); opacity: 0; }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cake-cut-complete h3 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: .16em;
+  background: linear-gradient(90deg, #f9a8d4, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cake-cut-complete p {
+  margin: 7px 0 18px;
+  color: rgba(255,255,255,.55);
+}
+
+.cake-next-button {
+  padding: 13px 30px;
+}
+
+.cake-next-button span {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+@media (max-width: 600px) {
+  .cake-cut-screen {
+    padding: 90px 18px 45px;
+  }
+
+  .cake-intro h2 {
+    font-size: 48px;
+  }
+
+  .cake-subtitle {
+    font-size: 14px;
+  }
+
+  .birthday-cake {
+    transform: scale(.78);
+    margin-top: -8px;
+    margin-bottom: -20px;
+  }
+
+  .birthday-cake:hover {
+    transform: scale(.78);
+  }
+
+  .cake-is-cut .cake-knife {
+    right: 70px;
+  }
+}
+
+/* =========================================================
+   BALLOON CELEBRATION AFTER CAKE CUT
+   ========================================================= */
+
+.balloon-celebration {
+  position: absolute;
+  inset: -20vh 0 -10vh;
+  z-index: 20;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flying-balloon {
+  position: absolute;
+  bottom: -90px;
+  width: var(--balloon-size);
+  height: calc(var(--balloon-size) * 1.22);
+  border-radius: 50% 50% 46% 46%;
+  animation: balloonFly linear forwards;
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,.3));
+}
+
+.flying-balloon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -11px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid currentColor;
+}
+
+.flying-balloon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 98%;
+  width: 1px;
+  height: 110px;
+  background: rgba(255,255,255,.4);
+  transform-origin: top;
+  transform: rotate(4deg);
+}
+
+.flying-balloon i {
+  position: absolute;
+  left: 18%;
+  top: 12%;
+  width: 18%;
+  height: 25%;
+  border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  transform: rotate(25deg);
+}
+
+/* Different festive balloon colors */
+.flying-balloon:nth-child(4n + 1) {
+  background: linear-gradient(145deg, #fb7185, #e11d48);
+  color: #e11d48;
+}
+
+.flying-balloon:nth-child(4n + 2) {
+  background: linear-gradient(145deg, #c084fc, #7c3aed);
+  color: #7c3aed;
+}
+
+.flying-balloon:nth-child(4n + 3) {
+  background: linear-gradient(145deg, #67e8f9, #0891b2);
+  color: #0891b2;
+}
+
+.flying-balloon:nth-child(4n + 4) {
+  background: linear-gradient(145deg, #fcd34d, #f59e0b);
+  color: #f59e0b;
+}
+
+@keyframes balloonFly {
+  0% {
+    transform:
+      translateY(0)
+      translateX(0)
+      rotate(var(--balloon-rotate))
+      scale(.65);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+    transform:
+      translateY(-10vh)
+      translateX(-8px)
+      rotate(calc(var(--balloon-rotate) * -1))
+      scale(1);
+  }
+
+  35% {
+    transform:
+      translateY(-45vh)
+      translateX(18px)
+      rotate(var(--balloon-rotate))
+      scale(1.03);
+  }
+
+  65% {
+    transform:
+      translateY(-80vh)
+      translateX(-20px)
+      rotate(calc(var(--balloon-rotate) * -1))
+      scale(.98);
+  }
+
+  100% {
+    transform:
+      translateY(-125vh)
+      translateX(25px)
+      rotate(var(--balloon-rotate))
+      scale(.9);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .balloon-celebration {
+    inset: -10vh 0 0;
+  }
+
+  .flying-balloon {
+    --balloon-size: 30px !important;
+  }
+}
+
+/* =========================================================
+   BUTTON-TO-CONTINUE PRESENTATION MODE
+   ========================================================= */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.app {
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.screen-stage {
+  height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+  position: relative;
+}
+
+.stage-next-button {
+  position: absolute;
+  z-index: 50;
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: .14em;
+  border-radius: 999px;
+  padding: 15px 34px;
+  background: linear-gradient(100deg, #9333ea, #ec4899);
+  box-shadow:
+    0 12px 35px rgba(168,85,247,.3),
+    inset 0 1px 0 rgba(255,255,255,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.stage-next-button:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow:
+    0 18px 45px rgba(236,72,153,.35),
+    0 0 30px rgba(168,85,247,.2);
+}
+
+.stage-next-button span {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.gift-next {
+  bottom: 30px;
+}
+
+.wish-section.screen-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-section.screen-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-section.screen-stage .message-card {
+  max-height: 68vh;
+  overflow: auto;
+}
+
+.final-section.screen-stage {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .stage-next-button {
+    bottom: 22px;
+    padding: 13px 27px;
+    font-size: 12px;
+  }
+
+  .message-section.screen-stage .message-card {
+    max-height: 66vh;
+  }
+}
+
+/* =========================================================
+   FINAL GIFT SCREEN LAYOUT FIX
+   ========================================================= */
+
+.gift-section.screen-stage {
+  height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  position: relative;
+  padding: 105px 24px 95px;
+}
+
+/* Heading */
+.gift-section.screen-stage .section-heading {
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
+  width: min(900px, 100%);
+  text-align: center;
+  margin: 0 auto 8px;
+}
+
+.gift-section.screen-stage .section-heading .small-caps {
+  margin-bottom: 8px;
+  font-size: 11px;
+  letter-spacing: .28em;
+}
+
+.gift-section.screen-stage .section-heading h2 {
+  margin: 0;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1;
+}
+
+.gift-section.screen-stage .section-heading p:last-child {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: .6;
+}
+
+/* Gift positioning */
+.gift-section.screen-stage .gift-box {
+  position: relative;
+  z-index: 6;
+  flex-shrink: 0;
+
+  margin: 2px auto -8px;
+
+  transform: scale(.78);
+  transform-origin: center center;
+}
+
+.gift-section.screen-stage .gift-box:hover {
+  transform: scale(.82) translateY(-5px);
+}
+
+/* Opened gift stays in exactly the same area */
+.gift-section.screen-stage .gift-box.opened {
+  transform: scale(.78);
+}
+
+/* Gift message */
+.gift-section.screen-stage .gift-message {
+  position: relative;
+  z-index: 10;
+
+  width: min(570px, calc(100vw - 48px));
+  box-sizing: border-box;
+
+  margin: -5px auto 0;
+  padding: 18px 28px 20px;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.075),
+      rgba(255,255,255,.025)
+    );
+
+  border: 1px solid rgba(255,255,255,.13);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.32),
+    inset 0 1px 0 rgba(255,255,255,.08);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  text-align: center;
+}
+
+.gift-section.screen-stage .gift-message svg {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 5px;
+}
+
+.gift-section.screen-stage .gift-message h3 {
+  margin: 0 0 7px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.gift-section.screen-stage .gift-message p {
+  margin: 0 auto 8px;
+  max-width: 480px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.62);
+}
+
+.gift-section.screen-stage .gift-message strong {
+  display: block;
+  font-size: 13px;
+  letter-spacing: .04em;
+}
+
+/* NEXT button - fixed clean position */
+.gift-section.screen-stage .gift-next {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  z-index: 30;
+
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.gift-section.screen-stage .gift-next:hover {
+  transform: translateX(-50%) translateY(-3px);
+}
+
+/* Before opening: keep visual balance */
+.gift-section.screen-stage:not(:has(.gift-message)) .gift-box {
+  margin-top: 20px;
+}
+
+/* Prevent the old generic screen positioning from fighting this */
+.gift-section.screen-stage .stage-next-button {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   SCREEN-SIZE ADJUSTMENTS
+   ========================================================= */
+
+@media (max-height: 800px) and (min-width: 601px) {
+  .gift-section.screen-stage {
+    padding-top: 75px;
+    padding-bottom: 80px;
+  }
+
+  .gift-section.screen-stage .section-heading h2 {
+    font-size: clamp(38px, 4vw, 58px);
+  }
+
+  .gift-section.screen-stage .gift-box {
+    transform: scale(.68);
+    margin-top: -8px;
+    margin-bottom: -35px;
+  }
+
+  .gift-section.screen-stage .gift-box.opened {
+    transform: scale(.68);
+  }
+
+  .gift-section.screen-stage .gift-message {
+    padding: 14px 24px 16px;
+  }
+
+  .gift-section.screen-stage .gift-message p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gift-section.screen-stage {
+    padding: 88px 18px 85px;
+  }
+
+  .gift-section.screen-stage .section-heading h2 {
+    font-size: 38px;
+  }
+
+  .gift-section.screen-stage .section-heading p:last-child {
+    font-size: 12px;
+  }
+
+  .gift-section.screen-stage .gift-box,
+  .gift-section.screen-stage .gift-box.opened {
+    transform: scale(.68);
+    margin-top: -8px;
+    margin-bottom: -35px;
+  }
+
+  .gift-section.screen-stage .gift-message {
+    width: calc(100vw - 30px);
+    padding: 15px 18px 17px;
+    border-radius: 18px;
+  }
+
+  .gift-section.screen-stage .gift-message h3 {
+    font-size: 17px;
+  }
+
+  .gift-section.screen-stage .gift-message p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .gift-section.screen-stage .gift-next {
+    bottom: 18px;
+  }
+}
+
+@media (max-height: 700px) {
+  .gift-section.screen-stage {
+    padding-top: 65px;
+    padding-bottom: 70px;
+  }
+
+  .gift-section.screen-stage .section-heading h2 {
+    font-size: 34px;
+  }
+
+  .gift-section.screen-stage .gift-box,
+  .gift-section.screen-stage .gift-box.opened {
+    transform: scale(.58);
+    margin-top: -25px;
+    margin-bottom: -55px;
+  }
+
+  .gift-section.screen-stage .gift-message {
+    padding: 11px 18px;
+  }
+
+  .gift-section.screen-stage .gift-message h3 {
+    font-size: 15px;
+  }
+
+  .gift-section.screen-stage .gift-message p {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   FINAL CELEBRATION SCREEN — FULL VIEWPORT FIX
+   ========================================================= */
+
+.final-section.screen-stage {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  padding: 45px 24px 30px;
+}
+
+.final-section.screen-stage .final-card {
+  width: min(900px, 100%);
+  max-height: calc(100svh - 55px);
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+/* Heart */
+.final-section.screen-stage .final-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-bottom: 12px;
+
+  border-radius: 50%;
+
+  color: #f472b6;
+
+  border: 1px solid rgba(244,114,182,.25);
+
+  box-shadow:
+    0 0 25px rgba(244,114,182,.12),
+    inset 0 0 20px rgba(244,114,182,.05);
+}
+
+/* Small heading */
+.final-section.screen-stage .small-caps {
+  margin: 0 0 12px;
+  font-size: 10px;
+  letter-spacing: .32em;
+}
+
+/* Main final message */
+.final-section.screen-stage h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: .98;
+  letter-spacing: -.045em;
+
+  max-width: 850px;
+}
+
+.final-section.screen-stage h2 span {
+  display: inline-block;
+}
+
+/* Divider */
+.final-section.screen-stage .final-divider {
+  width: 135px;
+  height: 1px;
+
+  margin: 17px auto 14px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+
+  flex-shrink: 0;
+}
+
+/* Keep shining */
+.final-section.screen-stage .keep {
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 1.5;
+
+  color: rgba(255,255,255,.72);
+}
+
+/* Birthday */
+.final-section.screen-stage h3 {
+  margin: 15px 0 7px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.final-section.screen-stage h3 span {
+  color: #f472b6;
+}
+
+/* Signature */
+.final-section.screen-stage .signature {
+  margin: 5px 0 12px;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  color: rgba(255,255,255,.42);
+}
+
+/* Replay */
+.final-section.screen-stage .replay-button {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  padding: 10px 19px;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   SHORT DESKTOP SCREENS
+   ========================================================= */
+
+@media (max-height: 800px) and (min-width: 601px) {
+  .final-section.screen-stage {
+    padding: 25px 20px 18px;
+  }
+
+  .final-section.screen-stage .final-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+  }
+
+  .final-section.screen-stage .small-caps {
+    margin-bottom: 8px;
+  }
+
+  .final-section.screen-stage h2 {
+    font-size: clamp(35px, 4vw, 54px);
+  }
+
+  .final-section.screen-stage .final-divider {
+    margin: 11px auto 9px;
+  }
+
+  .final-section.screen-stage .keep {
+    font-size: 14px;
+  }
+
+  .final-section.screen-stage h3 {
+    margin: 9px 0 4px;
+    font-size: 20px;
+  }
+
+  .final-section.screen-stage .signature {
+    margin-bottom: 7px;
+    font-size: 10px;
+  }
+
+  .final-section.screen-stage .replay-button {
+    padding: 8px 16px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .final-section.screen-stage {
+    padding: 30px 18px 20px;
+  }
+
+  .final-section.screen-stage .final-card {
+    max-height: calc(100svh - 35px);
+  }
+
+  .final-section.screen-stage .final-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 9px;
+  }
+
+  .final-section.screen-stage .small-caps {
+    font-size: 9px;
+    margin-bottom: 9px;
+  }
+
+  .final-section.screen-stage h2 {
+    font-size: clamp(31px, 9vw, 46px);
+    line-height: 1;
+  }
+
+  .final-section.screen-stage .final-divider {
+    width: 100px;
+    margin: 12px auto 10px;
+  }
+
+  .final-section.screen-stage .keep {
+    font-size: 13px;
+  }
+
+  .final-section.screen-stage h3 {
+    margin: 11px 0 5px;
+    font-size: 19px;
+  }
+
+  .final-section.screen-stage .signature {
+    font-size: 9px;
+    margin: 3px 0 10px;
+  }
+
+  .final-section.screen-stage .replay-button {
+    padding: 9px 15px;
+    font-size: 9px;
+  }
+}
+
+/* Very short phone screens */
+@media (max-height: 700px) {
+  .final-section.screen-stage {
+    padding-top: 18px;
+    padding-bottom: 12px;
+  }
+
+  .final-section.screen-stage .final-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+  }
+
+  .final-section.screen-stage h2 {
+    font-size: 30px;
+  }
+
+  .final-section.screen-stage .final-divider {
+    margin: 7px auto;
+  }
+
+  .final-section.screen-stage .keep {
+    font-size: 12px;
+  }
+
+  .final-section.screen-stage h3 {
+    margin: 7px 0 3px;
+    font-size: 17px;
+  }
+
+  .final-section.screen-stage .signature {
+    font-size: 8px;
+    margin-bottom: 5px;
+  }
+
+  .final-section.screen-stage .replay-button {
+    padding: 7px 13px;
+  }
+}
+
+
+/* ===== INITIAL LOAD PERFORMANCE ===== */
+/* Keep the intro lightweight until the surprise begins. */
+.app:not(.started) .particle,
+.app:not(.started) .ambient {
+  animation: none !important;
+}
+
+.app:not(.started) .ambient {
+  filter: none !important;
+  opacity: .35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP / LAPTOP VIEWPORT
+   Optimized for 1024px+ laptop and PC screens
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .app {
+    width: 100vw;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .screen-stage,
+  .hero,
+  .intro {
+    width: 100vw;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+  }
+
+  /* Keep desktop content centered inside the viewport */
+  .intro-content,
+  .section-heading {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Prevent desktop text from becoming excessively wide */
+  .intro-text {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Desktop button positioning */
+  .stage-next-button {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    transform: translateX(-50%);
+    z-index: 50;
+  }
+
+  /* Keep gift/message content inside one desktop viewport */
+  .gift-section,
+  .message-section,
+  .wish-section,
+  .final-section {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    overflow: hidden;
+  }
+
+  /* Large desktop screens */
+  @media (min-width: 1440px) {
+    .intro-content {
+      transform: scale(1.05);
+    }
+  }
+
+  /* Very large monitors */
+  @media (min-width: 1800px) {
+    .intro-content {
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* Laptop aspect-ratio protection */
+@media (min-width: 1024px) and (max-height: 700px) {
+
+  .intro-content {
+    transform: scale(.86);
+    transform-origin: center center;
+  }
+
+  .stage-next-button {
+    bottom: 18px;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 701px) and (max-height: 850px) {
+
+  .intro-content {
+    transform: scale(.94);
+    transform-origin: center center;
+  }
+}
+
+/* =========================================================
+   DESKTOP MESSAGE SCREEN — NO INTERNAL SCROLLBAR
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .message-section {
+    height: 100vh !important;
+    min-height: 0 !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 40px 90px !important;
+  }
+
+  .message-section .section-heading {
+    flex: 0 0 auto;
+    margin-bottom: 22px !important;
+  }
+
+  .message-section .message-card,
+  .message-section .message-box,
+  .message-section .reveal-card {
+    width: min(900px, 82vw);
+    max-height: calc(100vh - 240px) !important;
+    height: auto !important;
+    overflow: hidden !important;
+
+    scrollbar-width: none;
+  }
+
+  .message-section .message-card::-webkit-scrollbar,
+  .message-section .message-box::-webkit-scrollbar,
+  .message-section .reveal-card::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+
+  .message-section p {
+    max-width: 780px;
+  }
+
+  .message-section .stage-next-button {
+    bottom: 28px !important;
+  }
+}
+
+/* Short laptop screens */
+@media (min-width: 1024px) and (max-height: 720px) {
+
+  .message-section {
+    padding-top: 18px !important;
+    padding-bottom: 70px !important;
+  }
+
+  .message-section .section-heading {
+    margin-bottom: 12px !important;
+  }
+
+  .message-section .message-card,
+  .message-section .message-box,
+  .message-section .reveal-card {
+    max-height: calc(100vh - 190px) !important;
+    transform: scale(.88);
+    transform-origin: center center;
+  }
+
+  .message-section .stage-next-button {
+    bottom: 12px !important;
+  }
+}
+
+/* =========================================================
+   WISH SCREEN — LAPTOP / PC FIT
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .wish-section {
+    height: 100vh !important;
+    min-height: 0 !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wish-content {
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    max-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px 30px 82px !important;
+    box-sizing: border-box;
+  }
+
+  .wish-content h2 {
+    margin: 12px 0 18px !important;
+    line-height: .95 !important;
+  }
+
+  .wish-subtitle {
+    margin: 0 0 28px !important;
+  }
+
+  .wish-content .cake {
+    transform: scale(.72);
+    transform-origin: center center;
+    margin-top: -20px !important;
+    margin-bottom: -30px !important;
+    flex-shrink: 0;
+  }
+
+  .wish-button,
+  .wish-success {
+    flex-shrink: 0;
+    margin-top: 12px !important;
+  }
+
+  .wish-section .stage-next-button {
+    bottom: 24px !important;
+  }
+}
+
+/* 1366×768 / shorter laptop screens */
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .wish-content {
+    padding-top: 12px !important;
+    padding-bottom: 68px !important;
+  }
+
+  .wish-content h2 {
+    margin: 6px 0 12px !important;
+    font-size: clamp(64px, 7vw, 105px) !important;
+  }
+
+  .wish-subtitle {
+    margin-bottom: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  .wish-content .cake {
+    transform: scale(.52);
+    margin-top: -55px !important;
+    margin-bottom: -75px !important;
+  }
+
+  .wish-button,
+  .wish-success {
+    margin-top: 4px !important;
+  }
+
+  .wish-section .stage-next-button {
+    bottom: 10px !important;
+  }
+}
+
+/* Very short laptop displays */
+@media (min-width: 1024px) and (max-height: 680px) {
+
+  .wish-content h2 {
+    font-size: 62px !important;
+  }
+
+  .wish-subtitle {
+    font-size: 16px !important;
+  }
+
+  .wish-content .cake {
+    transform: scale(.42);
+    margin-top: -90px !important;
+    margin-bottom: -110px !important;
+  }
+}
+
+/* =========================================================
+   WISH SCREEN — FINAL LAPTOP SPACING FIX
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .wish-content {
+    justify-content: flex-start !important;
+    padding-top: 10vh !important;
+    padding-bottom: 70px !important;
+  }
+
+  .wish-content h2 {
+    margin: 10px 0 20px !important;
+  }
+
+  .wish-subtitle {
+    margin: 0 0 18px !important;
+    flex-shrink: 0;
+  }
+
+  .wish-content .cake {
+    transform: scale(.58) !important;
+    transform-origin: center center !important;
+
+    /* IMPORTANT: don't use negative margins */
+    margin: 0 !important;
+
+    flex-shrink: 0;
+  }
+
+  .wish-button,
+  .wish-success {
+    position: relative;
+    z-index: 20;
+    margin-top: -35px !important;
+    flex-shrink: 0;
+  }
+}
+
+/* 1366x768 and similar laptops */
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .wish-content {
+    padding-top: 7vh !important;
+  }
+
+  .wish-content h2 {
+    font-size: clamp(64px, 7vw, 96px) !important;
+    margin: 6px 0 14px !important;
+  }
+
+  .wish-subtitle {
+    margin-bottom: 4px !important;
+  }
+
+  .wish-content .cake {
+    transform: scale(.50) !important;
+    margin: 0 !important;
+  }
+
+  .wish-button,
+  .wish-success {
+    margin-top: -55px !important;
+  }
+}
+
+/* 1366x768 — give the cake and button a clean separation */
+@media (min-width: 1200px) and (max-height: 800px) {
+
+  .wish-content {
+    padding-top: 5vh !important;
+  }
+
+  .wish-content .cake {
+    transform: scale(.48) !important;
+  }
+
+  .wish-button,
+  .wish-success {
+    margin-top: -48px !important;
+  }
+}
+
+/* =========================================================
+   MESSAGE MEMORY IMAGE
+   ========================================================= */
+
+.message-memory-image {
+  width: min(420px, 70vw);
+  height: 135px;
+  margin: 0 auto 18px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow:
+    0 12px 35px rgba(139,92,246,.20),
+    inset 0 0 25px rgba(255,255,255,.04);
+}
+
+.message-memory-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.08),
+    transparent 45%,
+    rgba(5,3,11,.18)
+  );
+  pointer-events: none;
+}
+
+.message-memory-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .message-memory-image {
+    width: 320px;
+    height: 92px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .message-memory-image {
+    width: 460px;
+    height: 145px;
+  }
+}
+
+
+/* =========================================
+   PHOTO MEMORIES SCREEN
+   ========================================= */
+
+.photos-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 40px 40px 90px;
+}
+
+.photos-background-glow {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, .16) 0%,
+    rgba(34, 211, 238, .06) 35%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.photos-heading {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.photos-heading .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.photos-heading h2 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(38px, 4vw, 64px);
+  line-height: 1;
+  letter-spacing: -.035em;
+  color: #fff;
+}
+
+.photos-heading p {
+  margin: 10px 0 0;
+  color: rgba(255,255,255,.62);
+  font-size: 14px;
+}
+
+.photo-gallery {
+  position: relative;
+  z-index: 4;
+  width: min(850px, 82vw);
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-photo {
+  position: absolute;
+  overflow: hidden;
+  background: #090711;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.5),
+    0 0 35px rgba(139,92,246,.12);
+}
+
+.gallery-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.gallery-photo span {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(5,3,11,.65);
+  border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.82);
+  font-size: 9px;
+  letter-spacing: .18em;
+  backdrop-filter: blur(10px);
+}
+
+.gallery-photo-left {
+  width: 190px;
+  height: 285px;
+  left: 80px;
+  transform: rotate(-8deg);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.gallery-photo-main {
+  width: 235px;
+  height: 315px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 24px;
+  z-index: 3;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.6),
+    0 0 50px rgba(139,92,246,.25);
+}
+
+.gallery-photo-right {
+  width: 190px;
+  height: 285px;
+  right: 80px;
+  transform: rotate(8deg);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.gallery-main-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 35px rgba(139,92,246,.18),
+    inset 0 0 80px rgba(34,211,238,.05);
+}
+
+.gallery-photo:hover {
+  z-index: 10;
+}
+
+.gallery-photo-left:hover {
+  transform: rotate(-4deg) scale(1.04);
+}
+
+.gallery-photo-main:hover {
+  transform: translateX(-50%) scale(1.04);
+}
+
+.gallery-photo-right:hover {
+  transform: rotate(4deg) scale(1.04);
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .photos-section {
+    padding-top: 20px;
+    padding-bottom: 75px;
+  }
+
+  .photos-heading {
+    margin-bottom: 8px;
+  }
+
+  .photos-heading h2 {
+    font-size: clamp(32px, 3.5vw, 48px);
+  }
+
+  .photo-gallery {
+    height: 290px;
+  }
+
+  .gallery-photo-left,
+  .gallery-photo-right {
+    width: 150px;
+    height: 225px;
+  }
+
+  .gallery-photo-left {
+    left: 100px;
+  }
+
+  .gallery-photo-right {
+    right: 100px;
+  }
+
+  .gallery-photo-main {
+    width: 185px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 700px) {
+  .photos-section {
+    padding: 25px 15px 80px;
+  }
+
+  .photos-heading h2 {
+    font-size: 34px;
+  }
+
+  .photo-gallery {
+    width: 100%;
+    height: 300px;
+  }
+
+  .gallery-photo-left,
+  .gallery-photo-right {
+    width: 125px;
+    height: 190px;
+  }
+
+  .gallery-photo-left {
+    left: 10px;
+  }
+
+  .gallery-photo-right {
+    right: 10px;
+  }
+
+  .gallery-photo-main {
+    width: 165px;
+    height: 230px;
+  }
+}
+
+/* =========================================
+   CINEMATIC PHOTO PAGE ANIMATIONS
+   ========================================= */
+
+.photos-section .photos-background-glow {
+  animation: photoAmbientGlow 7s ease-in-out infinite;
+}
+
+.photos-section .photos-heading {
+  animation: photoHeadingReveal .9s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.photos-section .gallery-photo-left {
+  animation: photoLeftReveal 1.1s cubic-bezier(.2,.8,.2,1) .15s both,
+             photoLeftFloat 6s ease-in-out 1.3s infinite;
+}
+
+.photos-section .gallery-photo-main {
+  animation: photoMainReveal 1.15s cubic-bezier(.2,.8,.2,1) .3s both,
+             photoMainFloat 5s ease-in-out 1.5s infinite;
+}
+
+.photos-section .gallery-photo-right {
+  animation: photoRightReveal 1.1s cubic-bezier(.2,.8,.2,1) .45s both,
+             photoRightFloat 6s ease-in-out 1.6s infinite;
+}
+
+.photos-section .gallery-photo-main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 25%,
+    rgba(255,255,255,.14) 50%,
+    transparent 75%
+  );
+  transform: translateX(-130%);
+  animation: photoShine 4.5s ease-in-out 2s infinite;
+}
+
+.photos-section .gallery-photo span {
+  animation: photoBadgeReveal .7s ease-out 1.2s both;
+}
+
+@keyframes photoHeadingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes photoLeftReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) rotate(-18deg) scale(.82);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(-8deg) scale(1);
+  }
+}
+
+@keyframes photoMainReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(50px) scale(.72);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes photoRightReveal {
+  from {
+    opacity: 0;
+    transform: translateX(100px) rotate(18deg) scale(.82);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(8deg) scale(1);
+  }
+}
+
+@keyframes photoLeftFloat {
+  0%, 100% {
+    transform: rotate(-8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-6deg) translateY(-9px);
+  }
+}
+
+@keyframes photoMainFloat {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+}
+
+@keyframes photoRightFloat {
+  0%, 100% {
+    transform: rotate(8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(6deg) translateY(-9px);
+  }
+}
+
+@keyframes photoAmbientGlow {
+  0%, 100% {
+    opacity: .65;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+}
+
+@keyframes photoShine {
+  0%, 55% {
+    transform: translateX(-130%);
+  }
+  75% {
+    transform: translateX(130%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes photoBadgeReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle animated border around the main memory */
+.gallery-photo-main {
+  isolation: isolate;
+}
+
+.gallery-photo-main::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(139,92,246,.0),
+    rgba(139,92,246,.65),
+    rgba(34,211,238,.5),
+    rgba(139,92,246,.0)
+  );
+  animation: photoBorderRotate 5s linear infinite;
+}
+
+@keyframes photoBorderRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .photos-section *,
+  .photos-section .photos-background-glow {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =========================================================
+   REAL DOM CAKE CUTTING
+   The cake itself moves — not an image.
+   ========================================================= */
+
+.cake-main {
+  transition: transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Knife starts beside the cake */
+.cake-knife {
+  left: 68%;
+  bottom: 145px;
+  transform: rotate(-28deg) translateX(0);
+  opacity: .95;
+}
+
+/* Actual cutting movement */
+.cake-is-cut .cake-knife {
+  animation: realKnifeCut 1.65s cubic-bezier(.45,.05,.2,1) forwards;
+}
+
+/* The cake receives a visible cut */
+.cake-cut-line {
+  left: 58%;
+  bottom: 43px;
+  width: 5px;
+  height: 170px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.95),
+    rgba(255,150,220,.9)
+  );
+  box-shadow:
+    0 0 8px rgba(255,255,255,.8),
+    0 0 25px rgba(255,95,190,.55);
+}
+
+/* Left part of cake subtly moves left */
+.cake-is-cut .cake-main {
+  transform: translateX(calc(-50% - 8px));
+}
+
+/* The cake slice starts INSIDE the cake */
+.cake-slice {
+  left: 56%;
+  bottom: 76px;
+  width: 105px;
+  height: 130px;
+  opacity: 0;
+  transform:
+    translate(0,0)
+    rotate(0deg)
+    scale(.98);
+  transform-origin: center bottom;
+}
+
+/* Slice becomes visible only after the knife has entered */
+.cake-is-cut .cake-slice {
+  animation:
+    sliceSeparate 1.9s cubic-bezier(.18,.82,.22,1) 1.05s
+    forwards;
+}
+
+/* Serving plate appears underneath */
+.serving-plate {
+  right: 2%;
+  bottom: 40px;
+  opacity: 0;
+  transform: scale(.75);
+}
+
+.cake-is-cut .serving-plate {
+  animation:
+    plateAppear .7s cubic-bezier(.2,.8,.2,1) .9s
+    forwards;
+}
+
+/* Cake slice rests on plate */
+.cake-is-cut .cake-slice {
+  z-index: 12;
+}
+
+/* Small bounce when slice lands */
+.cake-is-cut.cake-is-served .cake-slice {
+  animation:
+    sliceLand .5s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+/* Knife movement:
+   1. approaches cake
+   2. pushes through frosting
+   3. cuts downward
+   4. exits
+*/
+@keyframes realKnifeCut {
+
+  0% {
+    transform:
+      rotate(-28deg)
+      translateX(100px)
+      translateY(-20px);
+  }
+
+  18% {
+    transform:
+      rotate(-28deg)
+      translateX(50px)
+      translateY(0);
+  }
+
+  42% {
+    transform:
+      rotate(-28deg)
+      translateX(5px)
+      translateY(20px);
+  }
+
+  62% {
+    transform:
+      rotate(-28deg)
+      translateX(-35px)
+      translateY(80px);
+  }
+
+  80% {
+    transform:
+      rotate(-28deg)
+      translateX(5px)
+      translateY(105px);
+  }
+
+  100% {
+    transform:
+      rotate(-28deg)
+      translateX(100px)
+      translateY(40px);
+  }
+}
+
+/* Slice is physically pulled away from the cake */
+@keyframes sliceSeparate {
+
+  0% {
+    opacity: 0;
+    transform:
+      translate(0,0)
+      rotate(0deg)
+      scale(.98);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  32% {
+    transform:
+      translate(22px,-8px)
+      rotate(1deg)
+      scale(1);
+  }
+
+  52% {
+    transform:
+      translate(65px,-35px)
+      rotate(5deg)
+      scale(.98);
+  }
+
+  72% {
+    transform:
+      translate(145px,5px)
+      rotate(8deg)
+      scale(.91);
+  }
+
+  90% {
+    transform:
+      translate(210px,55px)
+      rotate(5deg)
+      scale(.78);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translate(245px,58px)
+      rotate(2deg)
+      scale(.72);
+  }
+}
+
+@keyframes plateAppear {
+
+  0% {
+    opacity: 0;
+    transform: scale(.7);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sliceLand {
+
+  0% {
+    transform:
+      translate(245px,58px)
+      rotate(2deg)
+      scale(.72);
+  }
+
+  65% {
+    transform:
+      translate(245px,48px)
+      rotate(1deg)
+      scale(.75);
+  }
+
+  100% {
+    transform:
+      translate(245px,58px)
+      rotate(2deg)
+      scale(.72);
+  }
+}
+
+/* Cut line draws itself through the cake */
+.cake-is-cut .cake-cut-line {
+  animation:
+    drawRealCut .65s cubic-bezier(.2,.8,.2,1) .48s
+    forwards;
+  transform-origin: top center;
+  transform: scaleY(0);
+  opacity: 1;
+}
+
+@keyframes drawRealCut {
+
+  0% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Cake layers slightly compress when knife enters */
+.cake-is-cut .cake-top {
+  animation: cakeCompression .5s ease-out .35s;
+}
+
+.cake-is-cut .cake-middle {
+  animation: cakeCompression .55s ease-out .45s;
+}
+
+@keyframes cakeCompression {
+
+  0% {
+    transform:
+      translateX(-50%)
+      scaleY(1);
+  }
+
+  45% {
+    transform:
+      translateX(-50%)
+      scaleY(.96);
+  }
+
+  100% {
+    transform:
+      translateX(-50%)
+      scaleY(1);
+  }
+}
+
+/* Crumbs / frosting particles */
+.cake-is-cut .cake-sparkles i {
+  animation:
+    cakeCutParticle 1.3s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes cakeCutParticle {
+
+  0% {
+    opacity: 0;
+    transform: translate(0,0) scale(.2);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc((var(--particle-x, 1) * 35px)),
+        -55px
+      )
+      scale(1.4);
+  }
+}
+
+/* Make the plate look like it is waiting for the slice */
+.serving-plate::after {
+  content: "";
+  position: absolute;
+  inset: 8px 20px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(139,92,246,.18),
+      transparent 70%
+    );
+  filter: blur(5px);
+}
+
+/* Smaller screens */
+@media (max-width: 900px) {
+
+  .cake-scene {
+    transform: scale(.82);
+    transform-origin: center top;
+  }
+
+  .cake-knife {
+    left: 63%;
+  }
+
+  .serving-plate {
+    right: -2%;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-scene {
+    transform: scale(.76);
+    transform-origin: center top;
+  }
+}
+
+
+/* =========================================================
+   REALISTIC CAKE CUTTING — V2
+   ========================================================= */
+
+.cake-main {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Actual cake container */
+.cake-body {
+  position: absolute;
+  left: 50%;
+  bottom: 35px;
+  width: 320px;
+  height: 195px;
+  transform: translateX(-50%);
+  transform-style: preserve-3d;
+}
+
+/* Each half is now a physical piece */
+.cake-half {
+  position: absolute;
+  top: 0;
+  width: 160px;
+  height: 195px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition:
+    transform 1.25s cubic-bezier(.16,.75,.18,1),
+    filter .5s ease;
+}
+
+/* Left half */
+.cake-half-left {
+  left: 0;
+  border-radius: 18px 0 0 18px;
+  transform-origin: right center;
+}
+
+/* Right half */
+.cake-half-right {
+  right: 0;
+  border-radius: 0 18px 18px 0;
+  transform-origin: left center;
+}
+
+/* The layers inside each half */
+.cake-half .cake-layer {
+  left: 0;
+  transform: none;
+  width: 160px;
+  border-radius: 0;
+}
+
+.cake-half .cake-bottom {
+  bottom: 0;
+  height: 82px;
+}
+
+.cake-half .cake-middle {
+  bottom: 69px;
+  height: 72px;
+}
+
+.cake-half .cake-top {
+  bottom: 130px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+/* Cream follows the physical halves */
+.cake-half .cake-cream {
+  left: 0;
+  transform: none;
+  width: 160px;
+  height: 12px;
+  border-radius: 0;
+}
+
+.cake-half .cream-one {
+  bottom: 124px;
+}
+
+.cake-half .cream-two {
+  bottom: 64px;
+}
+
+/* Slightly realistic pressure before separation */
+.cake-is-cut .cake-half-left {
+  animation: leftCakePressure .55s ease-out .42s;
+}
+
+.cake-is-cut .cake-half-right {
+  animation: rightCakePressure .55s ease-out .42s;
+}
+
+/* Right side actually separates */
+.cake-is-cut .cake-half-right {
+  transform:
+    translateX(25px)
+    rotateY(-8deg)
+    rotateZ(1deg);
+  filter: brightness(1.03);
+}
+
+/* Left side barely moves */
+.cake-is-cut .cake-half-left {
+  transform:
+    translateX(-3px)
+    rotateY(1deg);
+}
+
+/* =========================================================
+   CANDLES
+   ========================================================= */
+
+.cake-candles {
+  position: absolute;
+  left: 50%;
+  bottom: 195px;
+  width: 250px;
+  height: 70px;
+  transform: translateX(-50%);
+  z-index: 15;
+  transition:
+    transform .9s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Candle positions relative to group */
+.cake-candles .cake-candle {
+  bottom: 0;
+}
+
+/* =========================================================
+   KNIFE — REAL CUTTING PATH
+   ========================================================= */
+
+.cake-knife {
+  z-index: 25;
+  left: 73%;
+  bottom: 153px;
+  width: 310px;
+  transform:
+    rotate(-24deg)
+    translateX(100px)
+    translateY(-10px);
+  transform-origin: 22px center;
+}
+
+.cake-is-cut .cake-knife {
+  animation:
+    realisticKnifeCut
+    1.75s
+    cubic-bezier(.42,0,.22,1)
+    forwards;
+}
+
+/* Blade gets a little highlight */
+.knife-blade {
+  position: relative;
+  overflow: hidden;
+}
+
+.knife-blade::after {
+  content: "";
+  position: absolute;
+  inset: 2px 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.75),
+    transparent
+  );
+  animation: bladeReflection 1.7s ease-in-out infinite;
+}
+
+/* =========================================================
+   CUTTING LINE
+   ========================================================= */
+
+.cake-cut-line {
+  z-index: 30;
+  left: 50%;
+  bottom: 40px;
+  width: 4px;
+  height: 170px;
+  opacity: 0;
+  transform:
+    translateX(-50%)
+    scaleY(0);
+  transform-origin: top center;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.98),
+    rgba(255,154,221,.9),
+    rgba(188,108,255,.55)
+  );
+
+  box-shadow:
+    0 0 8px rgba(255,255,255,.95),
+    0 0 18px rgba(255,104,211,.75);
+}
+
+.cake-is-cut .cake-cut-line {
+  animation:
+    realisticCutLine
+    .7s
+    cubic-bezier(.2,.8,.2,1)
+    .48s
+    forwards;
+}
+
+/* =========================================================
+   SLICE — STARTS INSIDE THE CAKE
+   ========================================================= */
+
+.cake-slice {
+  z-index: 22;
+  left: 55%;
+  bottom: 68px;
+  opacity: 0;
+  transform:
+    translate3d(0,0,0)
+    rotateZ(0)
+    rotateY(0)
+    scale(.96);
+
+  transform-style: preserve-3d;
+}
+
+.cake-is-cut .cake-slice {
+  animation:
+    realisticSliceRemoval
+    2.2s
+    cubic-bezier(.18,.8,.2,1)
+    1.15s
+    forwards;
+}
+
+/* =========================================================
+   PLATE
+   ========================================================= */
+
+.serving-plate {
+  z-index: 8;
+  right: 2%;
+  bottom: 38px;
+  opacity: 0;
+  transform:
+    translateX(80px)
+    scale(.65);
+}
+
+.cake-is-cut .serving-plate {
+  animation:
+    realisticPlateArrival
+    .8s
+    cubic-bezier(.2,.9,.2,1)
+    .85s
+    forwards;
+}
+
+/* =========================================================
+   SLICE LANDING
+   ========================================================= */
+
+.cake-is-served .cake-slice {
+  animation:
+    sliceSoftLanding
+    .55s
+    cubic-bezier(.2,.85,.25,1)
+    forwards !important;
+}
+
+/* =========================================================
+   CRUMBS
+   ========================================================= */
+
+.cake-crumbs {
+  position: absolute;
+  left: 50%;
+  bottom: 55px;
+  width: 20px;
+  height: 120px;
+  z-index: 35;
+  pointer-events: none;
+}
+
+.cake-crumbs i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ff9bcf;
+  opacity: 0;
+  box-shadow: 0 0 8px rgba(255,125,210,.65);
+}
+
+.cake-crumbs i:nth-child(1) {
+  left: 0;
+  top: 20px;
+}
+
+.cake-crumbs i:nth-child(2) {
+  left: 8px;
+  top: 32px;
+}
+
+.cake-crumbs i:nth-child(3) {
+  left: -7px;
+  top: 48px;
+}
+
+.cake-crumbs i:nth-child(4) {
+  left: 14px;
+  top: 62px;
+}
+
+.cake-crumbs i:nth-child(5) {
+  left: -4px;
+  top: 74px;
+}
+
+.cake-crumbs i:nth-child(6) {
+  left: 10px;
+  top: 85px;
+}
+
+.cake-crumbs i:nth-child(7) {
+  left: -10px;
+  top: 95px;
+}
+
+.cake-crumbs i:nth-child(8) {
+  left: 17px;
+  top: 105px;
+}
+
+.cake-is-cut .cake-crumbs i {
+  animation:
+    crumbBurst
+    1s
+    cubic-bezier(.2,.8,.2,1)
+    forwards;
+}
+
+.cake-is-cut .cake-crumbs i:nth-child(2) {
+  animation-delay: .08s;
+}
+
+.cake-is-cut .cake-crumbs i:nth-child(3) {
+  animation-delay: .14s;
+}
+
+.cake-is-cut .cake-crumbs i:nth-child(4) {
+  animation-delay: .2s;
+}
+
+.cake-is-cut .cake-crumbs i:nth-child(5) {
+  animation-delay: .26s;
+}
+
+.cake-is-cut .cake-crumbs i:nth-child(6) {
+  animation-delay: .32s;
+}
+
+.cake-is-cut .cake-crumbs i:nth-child(7) {
+  animation-delay: .38s;
+}
+
+.cake-is-cut .cake-crumbs i:nth-child(8) {
+  animation-delay: .44s;
+}
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes realisticKnifeCut {
+
+  0% {
+    transform:
+      rotate(-24deg)
+      translateX(115px)
+      translateY(-18px);
+  }
+
+  16% {
+    transform:
+      rotate(-24deg)
+      translateX(65px)
+      translateY(0);
+  }
+
+  32% {
+    transform:
+      rotate(-24deg)
+      translateX(25px)
+      translateY(20px);
+  }
+
+  /* Blade enters frosting */
+  47% {
+    transform:
+      rotate(-24deg)
+      translateX(-5px)
+      translateY(42px);
+  }
+
+  /* Blade travels down */
+  63% {
+    transform:
+      rotate(-24deg)
+      translateX(-28px)
+      translateY(92px);
+  }
+
+  /* Blade reaches plate level */
+  77% {
+    transform:
+      rotate(-24deg)
+      translateX(-5px)
+      translateY(128px);
+  }
+
+  /* Pull knife away */
+  100% {
+    transform:
+      rotate(-24deg)
+      translateX(125px)
+      translateY(55px);
+  }
+}
+
+@keyframes realisticCutLine {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateX(-50%)
+      scaleY(0);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .95;
+    transform:
+      translateX(-50%)
+      scaleY(1);
+  }
+}
+
+@keyframes leftCakePressure {
+
+  0% {
+    transform:
+      translateX(0)
+      rotateY(0);
+  }
+
+  45% {
+    transform:
+      translateX(-4px)
+      rotateY(1deg)
+      scaleY(.985);
+  }
+
+  100% {
+    transform:
+      translateX(-3px)
+      rotateY(1deg);
+  }
+}
+
+@keyframes rightCakePressure {
+
+  0% {
+    transform:
+      translateX(0)
+      rotateY(0);
+  }
+
+  45% {
+    transform:
+      translateX(4px)
+      rotateY(-3deg)
+      scaleY(.985);
+  }
+
+  100% {
+    transform:
+      translateX(25px)
+      rotateY(-8deg)
+      rotateZ(1deg);
+  }
+}
+
+@keyframes realisticSliceRemoval {
+
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0,0,0)
+      rotateZ(0)
+      rotateY(0)
+      scale(.96);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  /* Pull slice away from cake */
+  30% {
+    transform:
+      translate3d(22px,-8px,20px)
+      rotateZ(2deg)
+      rotateY(-3deg)
+      scale(.98);
+  }
+
+  /* Lift */
+  50% {
+    transform:
+      translate3d(72px,-48px,45px)
+      rotateZ(5deg)
+      rotateY(-8deg)
+      scale(.96);
+  }
+
+  /* Carry toward plate */
+  72% {
+    transform:
+      translate3d(145px,-5px,20px)
+      rotateZ(7deg)
+      rotateY(-4deg)
+      scale(.86);
+  }
+
+  /* Descend */
+  90% {
+    transform:
+      translate3d(220px,48px,0)
+      rotateZ(3deg)
+      rotateY(0)
+      scale(.76);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translate3d(245px,57px,0)
+      rotateZ(1deg)
+      rotateY(0)
+      scale(.74);
+  }
+}
+
+@keyframes realisticPlateArrival {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateX(90px)
+      scale(.65);
+  }
+
+  70% {
+    opacity: 1;
+    transform:
+      translateX(-4px)
+      scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      scale(1);
+  }
+}
+
+@keyframes sliceSoftLanding {
+
+  0% {
+    opacity: 1;
+    transform:
+      translate3d(245px,57px,0)
+      rotateZ(1deg)
+      scale(.74);
+  }
+
+  55% {
+    transform:
+      translate3d(245px,47px,0)
+      rotateZ(-1deg)
+      scale(.77);
+  }
+
+  100% {
+    transform:
+      translate3d(245px,57px,0)
+      rotateZ(0)
+      scale(.74);
+  }
+}
+
+@keyframes crumbBurst {
+
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0,0,0)
+      scale(.3);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(
+        calc((var(--crumb-direction, 1)) * 40px),
+        -55px,
+        0
+      )
+      scale(.75);
+  }
+}
+
+@keyframes bladeReflection {
+
+  0%, 55% {
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+
+  65% {
+    opacity: .8;
+  }
+
+  80%, 100% {
+    transform: translateX(210px);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   DESKTOP / LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-scene {
+    transform: scale(.76);
+    transform-origin: center top;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .cake-cutting-section *,
+  .cake-cutting-section *::before,
+  .cake-cutting-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =========================================================
+   REALISTIC CAKE CUTTING — MATCHES CURRENT JSX
+   ========================================================= */
+
+.birthday-cake {
+  position: relative;
+  isolation: isolate;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Cake halves */
+
+.cake-cutting-group {
+  position: absolute;
+  left: 50%;
+  bottom: 35px;
+  width: 300px;
+  height: 190px;
+  transform: translateX(-50%);
+  transform-style: preserve-3d;
+}
+
+.cake-left-piece,
+.cake-right-piece {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 190px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition:
+    transform 1.25s cubic-bezier(.16,.76,.18,1),
+    filter .4s ease;
+}
+
+.cake-left-piece {
+  left: 0;
+  transform-origin: right center;
+  border-radius: 18px 0 0 18px;
+}
+
+.cake-right-piece {
+  right: 0;
+  transform-origin: left center;
+  border-radius: 0 18px 18px 0;
+}
+
+/* Each cake layer is clipped to its physical half */
+
+.cake-left-piece .cake-layer,
+.cake-right-piece .cake-layer {
+  width: 300px;
+  left: 0;
+  transform: none;
+}
+
+.cake-left-piece .cake-top-layer,
+.cake-right-piece .cake-top-layer {
+  bottom: 125px;
+}
+
+.cake-left-piece .cake-main-layer,
+.cake-right-piece .cake-main-layer {
+  bottom: 62px;
+}
+
+.cake-left-piece .cake-bottom-layer,
+.cake-right-piece .cake-bottom-layer {
+  bottom: 0;
+}
+
+/* Make the cut side believable */
+
+.cake-cut-seam {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  top: 10px;
+  width: 4px;
+  height: 175px;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+
+  background: linear-gradient(
+    180deg,
+    #fff,
+    #ffb6df 40%,
+    #d47bff
+  );
+
+  box-shadow:
+    0 0 7px rgba(255,255,255,.9),
+    0 0 18px rgba(255,100,205,.65);
+}
+
+.birthday-cake.cake-is-cut .cake-cut-seam {
+  animation:
+    cakeSeamCut
+    .65s
+    cubic-bezier(.2,.8,.2,1)
+    .45s
+    forwards;
+}
+
+/* Pressure before separation */
+
+.birthday-cake.cake-is-cut .cake-left-piece {
+  animation:
+    cakeLeftPressure
+    .62s
+    ease-out
+    .38s
+    forwards;
+}
+
+.birthday-cake.cake-is-cut .cake-right-piece {
+  animation:
+    cakeRightPressure
+    1.35s
+    cubic-bezier(.15,.8,.18,1)
+    .42s
+    forwards;
+}
+
+/* =========================================================
+   KNIFE
+   ========================================================= */
+
+.birthday-cake .cake-knife {
+  position: absolute;
+  z-index: 30;
+  width: 250px;
+  height: 55px;
+  right: -80px;
+  top: 100px;
+  transform:
+    rotate(-27deg)
+    translateX(90px);
+  transform-origin: 20px 50%;
+  opacity: 1;
+}
+
+.birthday-cake .knife-blade {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 175px;
+  height: 15px;
+  border-radius: 3px;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #cce8ff 48%,
+    #7188b0
+  );
+
+  box-shadow:
+    0 0 10px rgba(160,220,255,.5);
+}
+
+.birthday-cake .knife-handle {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  width: 85px;
+  height: 32px;
+  border-radius: 7px 18px 18px 7px;
+
+  background: linear-gradient(
+    180deg,
+    #2c2750,
+    #090817
+  );
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.45);
+}
+
+.birthday-cake.cake-is-cut .cake-knife {
+  animation:
+    realisticCakeKnife
+    1.7s
+    cubic-bezier(.42,0,.2,1)
+    forwards;
+}
+
+/* =========================================================
+   REAL CAKE SLICE
+   ========================================================= */
+
+.birthday-cake .cake-slice {
+  position: absolute;
+  z-index: 25;
+
+  left: 48%;
+  bottom: 72px;
+
+  width: 82px;
+  height: 105px;
+
+  opacity: 0;
+
+  transform:
+    translate3d(0,0,0)
+    rotate(0deg)
+    scale(.96);
+
+  transform-origin: center bottom;
+  transform-style: preserve-3d;
+}
+
+.birthday-cake.cake-is-cut .cake-slice {
+  animation:
+    realSliceRemoval
+    2.15s
+    cubic-bezier(.18,.82,.2,1)
+    1.05s
+    forwards;
+}
+
+.slice-top,
+.slice-middle,
+.slice-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.slice-top {
+  top: 0;
+  height: 32px;
+  border-radius: 50% 50% 8px 8px;
+  background:
+    linear-gradient(
+      180deg,
+      #ffd7ec,
+      #f29ac5
+    );
+}
+
+.slice-middle {
+  top: 27px;
+  height: 37px;
+  background: linear-gradient(
+    180deg,
+    #ef477b,
+    #d93368
+  );
+}
+
+.slice-bottom {
+  bottom: 0;
+  height: 42px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(
+    180deg,
+    #9a45db,
+    #6925b8
+  );
+}
+
+.slice-icing {
+  position: absolute;
+  inset: 7px 5px auto;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.slice-cream {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 100%;
+  height: 7px;
+  background: #fff;
+}
+
+/* =========================================================
+   PLATE
+   ========================================================= */
+
+.birthday-cake .serving-plate {
+  position: absolute;
+  z-index: 15;
+
+  right: -125px;
+  bottom: 30px;
+
+  width: 155px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      #fff 0 38%,
+      #ddd1ff 39% 57%,
+      #8d68ff 58% 62%,
+      transparent 63%
+    );
+
+  opacity: 0;
+  transform:
+    translateX(60px)
+    scale(.65);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.35),
+    0 0 20px rgba(139,92,246,.25);
+}
+
+.birthday-cake.cake-is-cut .serving-plate {
+  animation:
+    servingPlateEnter
+    .75s
+    cubic-bezier(.2,.9,.2,1)
+    .75s
+    forwards;
+}
+
+.serving-plate-shine {
+  position: absolute;
+  inset: 7px 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+}
+
+/* =========================================================
+   CRUMBS
+   ========================================================= */
+
+.birthday-cake .cake-crumbs {
+  position: absolute;
+  z-index: 40;
+  left: 50%;
+  bottom: 65px;
+  width: 20px;
+  height: 110px;
+  pointer-events: none;
+}
+
+.birthday-cake .cake-crumbs i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+
+  background: #ff91cb;
+  box-shadow: 0 0 8px rgba(255,100,200,.65);
+
+  opacity: 0;
+}
+
+.birthday-cake.cake-is-cut .cake-crumbs i {
+  animation:
+    cakeCrumbBurst
+    1s
+    cubic-bezier(.2,.8,.2,1)
+    forwards;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(1) {
+  left: -4px;
+  top: 15px;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(2) {
+  left: 8px;
+  top: 30px;
+  animation-delay: .08s;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(3) {
+  left: -9px;
+  top: 45px;
+  animation-delay: .14s;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(4) {
+  left: 11px;
+  top: 58px;
+  animation-delay: .2s;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(5) {
+  left: -2px;
+  top: 70px;
+  animation-delay: .27s;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(6) {
+  left: 14px;
+  top: 80px;
+  animation-delay: .34s;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(7) {
+  left: -8px;
+  top: 90px;
+  animation-delay: .41s;
+}
+
+.birthday-cake .cake-crumbs i:nth-child(8) {
+  left: 7px;
+  top: 98px;
+  animation-delay: .48s;
+}
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes realisticCakeKnife {
+
+  0% {
+    transform:
+      rotate(-27deg)
+      translateX(95px)
+      translateY(-10px);
+  }
+
+  17% {
+    transform:
+      rotate(-27deg)
+      translateX(55px)
+      translateY(8px);
+  }
+
+  35% {
+    transform:
+      rotate(-27deg)
+      translateX(15px)
+      translateY(25px);
+  }
+
+  /* Contact */
+  47% {
+    transform:
+      rotate(-27deg)
+      translateX(-10px)
+      translateY(50px);
+  }
+
+  /* Cutting downward */
+  64% {
+    transform:
+      rotate(-27deg)
+      translateX(-30px)
+      translateY(105px);
+  }
+
+  /* Reaches bottom */
+  76% {
+    transform:
+      rotate(-27deg)
+      translateX(-5px)
+      translateY(135px);
+  }
+
+  /* Pulls away */
+  100% {
+    transform:
+      rotate(-27deg)
+      translateX(105px)
+      translateY(45px);
+  }
+}
+
+@keyframes cakeSeamCut {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateX(-50%)
+      scaleY(0);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .95;
+    transform:
+      translateX(-50%)
+      scaleY(1);
+  }
+}
+
+@keyframes cakeLeftPressure {
+
+  0% {
+    transform: translateX(0) rotateY(0) scaleY(1);
+  }
+
+  45% {
+    transform: translateX(-3px) rotateY(1deg) scaleY(.985);
+  }
+
+  100% {
+    transform: translateX(-4px) rotateY(1deg) scaleY(1);
+  }
+}
+
+@keyframes cakeRightPressure {
+
+  0% {
+    transform: translateX(0) rotateY(0) scaleY(1);
+  }
+
+  40% {
+    transform: translateX(3px) rotateY(-2deg) scaleY(.985);
+  }
+
+  68% {
+    transform: translateX(9px) rotateY(-5deg) scaleY(.99);
+  }
+
+  100% {
+    transform: translateX(27px) rotateY(-9deg) rotateZ(1deg);
+  }
+}
+
+@keyframes realSliceRemoval {
+
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0,0,0)
+      rotate(0)
+      scale(.96);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  /* Slice is pulled out */
+  28% {
+    transform:
+      translate3d(20px,-5px,15px)
+      rotate(2deg)
+      scale(.98);
+  }
+
+  /* Lift */
+  48% {
+    transform:
+      translate3d(60px,-45px,35px)
+      rotate(5deg)
+      scale(.95);
+  }
+
+  /* Move toward plate */
+  68% {
+    transform:
+      translate3d(130px,-5px,20px)
+      rotate(7deg)
+      scale(.86);
+  }
+
+  /* Descend */
+  88% {
+    transform:
+      translate3d(205px,42px,0)
+      rotate(3deg)
+      scale(.76);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translate3d(230px,50px,0)
+      rotate(1deg)
+      scale(.74);
+  }
+}
+
+@keyframes servingPlateEnter {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateX(65px)
+      scale(.65);
+  }
+
+  65% {
+    opacity: 1;
+    transform:
+      translateX(-3px)
+      scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      scale(1);
+  }
+}
+
+@keyframes cakeCrumbBurst {
+
+  0% {
+    opacity: 0;
+    transform:
+      translate(0,0)
+      scale(.2);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc((var(--crumb-x, 1) * 35px)),
+        -55px
+      )
+      scale(.7);
+  }
+}
+
+/* =========================================================
+   MOBILE / LAPTOP SAFETY
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .birthday-cake {
+    transform: scale(.85);
+    transform-origin: center top;
+  }
+
+  .birthday-cake .serving-plate {
+    right: -90px;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .birthday-cake {
+    transform: scale(.78);
+    transform-origin: center top;
+  }
+}
+
+/* =========================================================
+   FINAL CAKE UI FIX
+   Fixes:
+   - oversized knife
+   - broken cake halves
+   - floating plate
+   - tiny cake slice
+   - incorrect proportions
+   - poor centering
+   ========================================================= */
+
+.cake-cut-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.cake-intro {
+  position: relative;
+  z-index: 10;
+}
+
+/* -------------------------
+   CAKE CONTAINER
+   ------------------------- */
+
+.birthday-cake {
+  position: relative !important;
+  width: 430px !important;
+  height: 310px !important;
+  margin: 24px auto 20px !important;
+
+  display: block !important;
+
+  transform: none !important;
+  isolation: isolate;
+}
+
+/* -------------------------
+   CAKE BODY
+   ------------------------- */
+
+.cake-cutting-group {
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 42px !important;
+
+  width: 340px !important;
+  height: 220px !important;
+
+  transform: translateX(-50%) !important;
+
+  z-index: 5;
+}
+
+/* Each half is only a clipping window */
+.cake-left-piece,
+.cake-right-piece {
+  position: absolute !important;
+
+  top: 0 !important;
+
+  width: 170px !important;
+  height: 220px !important;
+
+  overflow: hidden !important;
+
+  transition:
+    transform 1.15s cubic-bezier(.22,.75,.25,1),
+    filter 1s ease;
+}
+
+/* LEFT HALF */
+.cake-left-piece {
+  left: 0 !important;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  transform-origin: right center;
+}
+
+/* RIGHT HALF */
+.cake-right-piece {
+  right: 0 !important;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  transform-origin: left center;
+}
+
+/*
+   IMPORTANT:
+   The actual cake layers remain full width.
+   The clipping containers show only half.
+*/
+
+.cake-left-piece .cake-layer,
+.cake-right-piece .cake-layer {
+  position: absolute !important;
+
+  width: 340px !important;
+  left: 0 !important;
+
+  margin: 0 !important;
+}
+
+/* Right side must display the RIGHT half of the same cake */
+.cake-right-piece .cake-layer {
+  left: -170px !important;
+}
+
+/* -------------------------
+   CAKE LAYER PROPORTIONS
+   ------------------------- */
+
+.cake-top-layer {
+  top: 0 !important;
+
+  height: 58px !important;
+
+  border-radius: 20px 20px 14px 14px !important;
+}
+
+.cake-main-layer {
+  top: 55px !important;
+
+  height: 105px !important;
+
+  border-radius: 0 0 18px 18px !important;
+}
+
+.cake-bottom-layer {
+  top: 155px !important;
+
+  height: 65px !important;
+
+  border-radius: 0 0 18px 18px !important;
+}
+
+/* Keep icing inside cake */
+.cake-left-piece .icing,
+.cake-right-piece .icing {
+  width: 100% !important;
+  height: 18px !important;
+  left: 0 !important;
+}
+
+/* Cream line */
+.cake-left-piece .cream-line,
+.cake-right-piece .cream-line {
+  width: 100% !important;
+  height: 10px !important;
+}
+
+/* -------------------------
+   CUT SEAM
+   ------------------------- */
+
+.cake-cut-seam {
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 0 !important;
+
+  width: 3px !important;
+  height: 220px !important;
+
+  transform: translateX(-50%) !important;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255,255,255,.8) 20%,
+      rgba(255,255,255,.35) 50%,
+      transparent 90%
+    ) !important;
+
+  opacity: .65;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+/* -------------------------
+   PLATE
+   ------------------------- */
+
+.cake-plate {
+  position: absolute !important;
+
+  left: 50% !important;
+  bottom: 25px !important;
+
+  width: 390px !important;
+  height: 34px !important;
+
+  transform: translateX(-50%) !important;
+
+  border-radius: 50% !important;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #e8e6ff 42%,
+      #b8b3dc 100%
+    ) !important;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.35),
+    0 0 30px rgba(205,185,255,.18) !important;
+
+  z-index: 2 !important;
+}
+
+/* plate inner rim */
+.cake-plate::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 7px;
+
+  width: 330px;
+  height: 18px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(151,130,255,.3);
+
+  pointer-events: none;
+}
+
+/* -------------------------
+   SERVING PLATE
+   ------------------------- */
+
+.serving-plate {
+  position: absolute !important;
+
+  right: 20px !important;
+  bottom: 22px !important;
+
+  width: 125px !important;
+  height: 34px !important;
+
+  border-radius: 50% !important;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #ffffff 0%,
+      #e6e3ff 55%,
+      #a8a2cf 100%
+    ) !important;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.35),
+    0 0 18px rgba(180,165,255,.22) !important;
+
+  z-index: 15 !important;
+
+  transform: none !important;
+}
+
+.serving-plate-shine {
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 7px !important;
+
+  width: 82px !important;
+  height: 7px !important;
+
+  transform: translateX(-50%) !important;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.65);
+}
+
+/* -------------------------
+   CAKE SLICE
+   ------------------------- */
+
+.cake-slice {
+  position: absolute !important;
+
+  right: 34px !important;
+  bottom: 48px !important;
+
+  width: 72px !important;
+  height: 90px !important;
+
+  transform: none !important;
+
+  z-index: 25 !important;
+}
+
+/* Slice top */
+.slice-top {
+  position: absolute !important;
+
+  left: 0 !important;
+  top: 0 !important;
+
+  width: 72px !important;
+  height: 28px !important;
+
+  border-radius: 13px 13px 6px 6px !important;
+
+  overflow: hidden;
+}
+
+.slice-middle {
+  position: absolute !important;
+
+  left: 0 !important;
+  top: 25px !important;
+
+  width: 72px !important;
+  height: 42px !important;
+}
+
+.slice-bottom {
+  position: absolute !important;
+
+  left: 0 !important;
+  bottom: 0 !important;
+
+  width: 72px !important;
+  height: 28px !important;
+
+  border-radius: 0 0 8px 8px !important;
+}
+
+/* -------------------------
+   KNIFE
+   ------------------------- */
+
+.cake-knife {
+  position: absolute !important;
+
+  width: 170px !important;
+  height: 42px !important;
+
+  top: 8px !important;
+  right: 72px !important;
+
+  transform: rotate(-27deg) !important;
+
+  z-index: 40 !important;
+
+  pointer-events: none;
+}
+
+/* actual blade */
+.cake-knife .knife-blade {
+  position: absolute !important;
+
+  left: 0 !important;
+  top: 8px !important;
+
+  width: 128px !important;
+  height: 24px !important;
+
+  border-radius: 6px 16px 16px 6px !important;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #e9edf4 40%,
+      #b9c3d1 100%
+    ) !important;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.35),
+    inset 0 1px 1px rgba(255,255,255,.9) !important;
+}
+
+/* blade highlight */
+.cake-knife .knife-blade::after {
+  content: "";
+
+  position: absolute;
+
+  left: 10px;
+  top: 5px;
+
+  width: 92px;
+  height: 3px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.8);
+}
+
+/* handle */
+.cake-knife .knife-handle {
+  position: absolute !important;
+
+  right: 0 !important;
+  top: 4px !important;
+
+  width: 48px !important;
+  height: 32px !important;
+
+  border-radius: 9px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #26234e,
+      #11102d
+    ) !important;
+
+  box-shadow:
+    0 5px 14px rgba(0,0,0,.4) !important;
+}
+
+/* -------------------------
+   CANDLE
+   ------------------------- */
+
+.cake-candle {
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 5px !important;
+
+  width: 16px !important;
+  height: 62px !important;
+
+  transform: translateX(-50%) !important;
+
+  z-index: 35 !important;
+}
+
+.cake-candle::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 8px;
+
+  width: 16px;
+  height: 45px;
+
+  border-radius: 5px;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #ffffff 0 7px,
+      #62d9ed 7px 13px
+    );
+
+  box-shadow:
+    0 0 10px rgba(91,222,255,.45);
+}
+
+.cake-candle span {
+  position: absolute !important;
+
+  left: 50% !important;
+  top: -3px !important;
+
+  width: 15px !important;
+  height: 21px !important;
+
+  transform: translateX(-50%) !important;
+
+  border-radius: 50% 50% 50% 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      #fff4a0 0%,
+      #ffc21c 45%,
+      #ff8c00 100%
+    ) !important;
+
+  box-shadow:
+    0 0 15px rgba(255,184,40,.9),
+    0 0 30px rgba(255,155,30,.4) !important;
+}
+
+/* -------------------------
+   CRUMBS
+   ------------------------- */
+
+.cake-crumbs {
+  position: absolute !important;
+
+  left: 50% !important;
+  bottom: 46px !important;
+
+  width: 260px !important;
+  height: 25px !important;
+
+  transform: translateX(-50%) !important;
+
+  z-index: 18 !important;
+
+  pointer-events: none;
+}
+
+.cake-crumbs i {
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #f4b8cf;
+
+  box-shadow: 0 0 5px rgba(255,150,190,.5);
+}
+
+/* -------------------------
+   CUT ANIMATION
+   ------------------------- */
+
+.cake-is-cut .cake-left-piece {
+  animation:
+    cakeLeftNaturalCut 1.25s
+    cubic-bezier(.2,.8,.25,1)
+    forwards;
+}
+
+.cake-is-cut .cake-right-piece {
+  animation:
+    cakeRightNaturalCut 1.25s
+    cubic-bezier(.2,.8,.25,1)
+    forwards;
+}
+
+@keyframes cakeLeftNaturalCut {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  30% {
+    transform: translateX(-3px) rotate(-.4deg);
+  }
+
+  100% {
+    transform: translateX(-24px) rotate(-1deg);
+  }
+}
+
+@keyframes cakeRightNaturalCut {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  30% {
+    transform: translateX(3px) rotate(.4deg);
+  }
+
+  100% {
+    transform: translateX(24px) rotate(1deg);
+  }
+}
+
+/* Knife moves through cake */
+.cake-is-cut .cake-knife {
+  animation:
+    realisticKnifeCut 1.15s
+    cubic-bezier(.35,.8,.25,1)
+    forwards;
+}
+
+@keyframes realisticKnifeCut {
+  0% {
+    transform:
+      translate(45px,-5px)
+      rotate(-27deg);
+  }
+
+  45% {
+    transform:
+      translate(-25px,45px)
+      rotate(-27deg);
+  }
+
+  75% {
+    transform:
+      translate(-75px,100px)
+      rotate(-27deg);
+  }
+
+  100% {
+    transform:
+      translate(-105px,125px)
+      rotate(-27deg);
+  }
+}
+
+/* Slice gets served */
+.cake-is-cut .cake-slice {
+  animation:
+    serveCakeSlice 1.2s
+    cubic-bezier(.2,.8,.25,1)
+    .75s forwards;
+}
+
+@keyframes serveCakeSlice {
+  0% {
+    opacity: 0;
+    transform:
+      translate(-20px,-10px)
+      scale(.65);
+  }
+
+  45% {
+    opacity: 1;
+    transform:
+      translate(5px,-35px)
+      scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translate(0,0)
+      scale(1);
+  }
+}
+
+/* -------------------------
+   BETTER RESPONSIVE SCALE
+   ------------------------- */
+
+@media (max-width: 900px) {
+  .birthday-cake {
+    transform: scale(.82) !important;
+    transform-origin: center center;
+    margin-top: 8px !important;
+    margin-bottom: 5px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .birthday-cake {
+    transform: scale(.68) !important;
+  }
+
+  .cake-knife {
+    right: 55px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cake-is-cut .cake-left-piece,
+  .cake-is-cut .cake-right-piece,
+  .cake-is-cut .cake-knife,
+  .cake-is-cut .cake-slice {
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   REALISTIC CAKE — FINAL VERSION
+   ========================================================= */
+
+.realistic-birthday-cake {
+  position: relative !important;
+  width: 560px !important;
+  height: 350px !important;
+  margin: 5px auto 0 !important;
+  transform: none !important;
+  perspective: 1000px;
+  isolation: isolate;
+}
+
+/* ---------- cake shadow ---------- */
+
+.real-cake-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 42px;
+  width: 420px;
+  height: 38px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(0,0,0,.38);
+  filter: blur(15px);
+  z-index: 1;
+}
+
+/* ---------- main cake ---------- */
+
+.real-cake-body {
+  position: absolute;
+  left: 50%;
+  top: 65px;
+  width: 390px;
+  height: 235px;
+  transform: translateX(-50%);
+  border-radius: 24px 24px 20px 20px;
+  overflow: visible;
+  z-index: 8;
+
+  background:
+    linear-gradient(
+      90deg,
+      #9e236d 0%,
+      #c52e83 12%,
+      #ed4b99 38%,
+      #f457a5 53%,
+      #dc3d91 78%,
+      #a62270 100%
+    );
+
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.34),
+    inset 12px 0 22px rgba(255,255,255,.10),
+    inset -14px 0 22px rgba(70,0,45,.20);
+}
+
+/* ---------- top frosting ---------- */
+
+.real-cake-top {
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 100%;
+  height: 70px;
+  border-radius: 25px 25px 16px 16px;
+
+  background:
+    radial-gradient(
+      ellipse at 45% 35%,
+      #fffaff 0%,
+      #ffeaf4 42%,
+      #f5b6d1 100%
+    );
+
+  box-shadow:
+    inset 0 -8px 12px rgba(170,45,110,.16),
+    0 4px 8px rgba(0,0,0,.14);
+
+  overflow: visible;
+}
+
+.real-frosting {
+  position: absolute;
+  left: 0;
+  bottom: -9px;
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(#fff9fc,#ffd9e9);
+  border-radius: 0 0 16px 16px;
+}
+
+.frost-drop {
+  position: absolute;
+  bottom: -13px;
+  width: 22px;
+  height: 25px;
+  border-radius: 0 0 13px 13px;
+  background: #ffd8e9;
+}
+
+.drop-one {
+  left: 18%;
+}
+
+.drop-two {
+  left: 49%;
+  height: 32px;
+}
+
+.drop-three {
+  right: 14%;
+  height: 21px;
+}
+
+.cake-top-shine {
+  position: absolute;
+  left: 12%;
+  top: 13px;
+  width: 70%;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.65);
+  filter: blur(3px);
+}
+
+/* ---------- sponge layers ---------- */
+
+.real-cake-layer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.real-layer-upper {
+  top: 76px;
+  height: 55px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #df3d8c,
+      #f2539f 45%,
+      #df3d8b
+    );
+}
+
+.real-layer-middle {
+  top: 143px;
+  height: 45px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #c93282,
+      #e64794 50%,
+      #c52d7d
+    );
+}
+
+.real-layer-bottom {
+  top: 198px;
+  height: 37px;
+
+  border-radius: 0 0 20px 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #9d236d,
+      #c32f82 45%,
+      #a92472
+    );
+}
+
+.bottom-shade {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12px;
+  background: rgba(63,0,42,.18);
+}
+
+/* ---------- cream ---------- */
+
+.real-cream-band {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 11px;
+  background:
+    linear-gradient(
+      to bottom,
+      #fffafd,
+      #ffd5e8
+    );
+  box-shadow:
+    0 2px 5px rgba(78,0,45,.15);
+  z-index: 4;
+}
+
+.cream-band-one {
+  top: 130px;
+}
+
+.cream-band-two {
+  top: 188px;
+}
+
+/* ---------- sponge texture ---------- */
+
+.sponge-texture {
+  position: absolute;
+  inset: 0;
+  opacity: .18;
+}
+
+.sponge-texture i {
+  position: absolute;
+  width: 7px;
+  height: 4px;
+  border-radius: 50%;
+  background: #8f1c60;
+}
+
+.sponge-texture i:nth-child(1) {
+  left: 13%;
+  top: 20px;
+}
+
+.sponge-texture i:nth-child(2) {
+  left: 27%;
+  top: 37px;
+}
+
+.sponge-texture i:nth-child(3) {
+  left: 44%;
+  top: 18px;
+}
+
+.sponge-texture i:nth-child(4) {
+  left: 61%;
+  top: 33px;
+}
+
+.sponge-texture i:nth-child(5) {
+  left: 76%;
+  top: 17px;
+}
+
+.sponge-texture i:nth-child(6) {
+  left: 88%;
+  top: 38px;
+}
+
+/* ---------- actual cut ---------- */
+
+.cake-cut-line {
+  position: absolute;
+  left: 58%;
+  top: 6px;
+  width: 4px;
+  height: 222px;
+  transform: rotate(1deg);
+  transform-origin: center;
+  background: rgba(52,0,35,.55);
+  opacity: 0;
+  z-index: 20;
+  box-shadow:
+    1px 0 3px rgba(255,255,255,.22);
+}
+
+.cake-cut-line span {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 1px;
+  height: 90%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.25);
+}
+
+.cake-cut-shadow {
+  position: absolute;
+  left: 58%;
+  top: 4px;
+  width: 20px;
+  height: 225px;
+  transform: translateX(-50%);
+  background: rgba(40,0,25,.20);
+  filter: blur(8px);
+  opacity: 0;
+  z-index: 19;
+}
+
+/* ---------- candle ---------- */
+
+.real-candle {
+  position: absolute;
+  left: 42%;
+  top: 25px;
+  width: 19px;
+  height: 65px;
+  transform: translateX(-50%);
+  z-index: 40;
+}
+
+.real-candle-stick {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 19px;
+  height: 55px;
+  border-radius: 5px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #fff 0 7px,
+      #55d9ed 7px 14px
+    );
+  box-shadow:
+    0 0 10px rgba(68,220,245,.42);
+}
+
+.real-flame {
+  position: absolute;
+  left: 50%;
+  top: -17px;
+  width: 18px;
+  height: 27px;
+  transform: translateX(-50%);
+  border-radius: 55% 55% 55% 55%;
+
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      #fffbd0 0%,
+      #ffd329 42%,
+      #ff8b17 72%,
+      transparent 73%
+    );
+
+  filter:
+    drop-shadow(0 0 8px #ffbf24)
+    drop-shadow(0 0 18px rgba(255,168,25,.65));
+
+  animation: cakeFlame 1s ease-in-out infinite alternate;
+}
+
+.real-flame span {
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 7px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #fffbd8;
+}
+
+@keyframes cakeFlame {
+  from {
+    transform: translateX(-50%) rotate(-3deg) scale(1);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(4deg) scale(1.08,.94);
+  }
+}
+
+/* ---------- knife ---------- */
+
+.real-knife {
+  position: absolute;
+  top: 15px;
+  right: 42px;
+  width: 205px;
+  height: 55px;
+  transform: rotate(-27deg);
+  transform-origin: 80% 50%;
+  z-index: 60;
+}
+
+.real-knife-blade {
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 157px;
+  height: 28px;
+  border-radius: 5px 17px 17px 5px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff,
+      #e7edf4 45%,
+      #b8c2cf
+    );
+
+  box-shadow:
+    0 5px 12px rgba(0,0,0,.35),
+    inset 0 1px 2px rgba(255,255,255,.9);
+}
+
+.real-knife-blade span {
+  position: absolute;
+  left: 13px;
+  top: 6px;
+  width: 110px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+}
+
+.real-knife-handle {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  width: 55px;
+  height: 38px;
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      135deg,
+      #2c2955,
+      #11102e
+    );
+  box-shadow:
+    0 7px 14px rgba(0,0,0,.4);
+}
+
+/* ---------- main plate ---------- */
+
+.real-cake-plate {
+  position: absolute;
+  left: 50%;
+  bottom: 35px;
+  width: 455px;
+  height: 45px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #fff 0%,
+      #ebe8ff 52%,
+      #b9b2d8 100%
+    );
+
+  box-shadow:
+    0 13px 22px rgba(0,0,0,.35),
+    0 0 25px rgba(192,174,255,.18);
+
+  z-index: 5;
+}
+
+.real-cake-plate span {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 370px;
+  height: 22px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 2px solid rgba(150,130,220,.25);
+}
+
+/* ---------- serving plate ---------- */
+
+.real-serving-area {
+  position: absolute;
+  right: 3px;
+  bottom: 28px;
+  width: 145px;
+  height: 130px;
+  z-index: 50;
+}
+
+.real-serving-plate {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 145px;
+  height: 42px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #fff,
+      #e8e4fc 58%,
+      #aaa4ca
+    );
+
+  box-shadow:
+    0 10px 18px rgba(0,0,0,.34);
+}
+
+.real-serving-plate span {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  width: 92px;
+  height: 11px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(255,255,255,.72);
+}
+
+/* ---------- cake wedge ---------- */
+
+.real-cake-slice {
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  width: 82px;
+  height: 96px;
+  transform:
+    translateX(-50%)
+    rotate(-2deg);
+  transform-origin: bottom center;
+  opacity: 0;
+  z-index: 5;
+
+  filter:
+    drop-shadow(0 7px 7px rgba(0,0,0,.3));
+}
+
+/*
+   The body is a genuine wedge rather than
+   a rectangular mini cake.
+*/
+
+.slice-body {
+  position: absolute;
+  left: 2px;
+  bottom: 0;
+  width: 78px;
+  height: 70px;
+
+  clip-path:
+    polygon(
+      4% 100%,
+      96% 100%,
+      70% 0,
+      28% 0
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      #a92570,
+      #e34794 48%,
+      #b72b78
+    );
+}
+
+.slice-cream-line {
+  position: absolute;
+  left: 16%;
+  width: 68%;
+  height: 7px;
+  background: #ffd9e9;
+}
+
+.slice-cream-line.one {
+  top: 24px;
+}
+
+.slice-cream-line.two {
+  top: 43px;
+}
+
+.slice-bottom-crust {
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  width: 52px;
+  height: 17px;
+  border-radius: 0 0 8px 8px;
+  background:
+    linear-gradient(
+      90deg,
+      #8d205f,
+      #b82d79,
+      #8e205f
+    );
+}
+
+/* slice frosting */
+
+.slice-top-frosting {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  width: 62px;
+  height: 27px;
+  border-radius: 50% 50% 9px 9px;
+  background:
+    linear-gradient(
+      to bottom,
+      #fffaff,
+      #ffd8e9
+    );
+  z-index: 5;
+}
+
+.slice-top-frosting span {
+  position: absolute;
+  left: 25px;
+  bottom: -8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 0 0 9px 9px;
+  background: #ffd8e9;
+}
+
+.slice-gloss {
+  position: absolute;
+  left: 25px;
+  top: 14px;
+  width: 30px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.65);
+  filter: blur(2px);
+  z-index: 10;
+}
+
+/* ---------- cutting animation ---------- */
+
+.cake-is-cut .real-knife {
+  animation:
+    realisticKnifeCut
+    1.55s
+    cubic-bezier(.25,.75,.2,1)
+    forwards;
+}
+
+.cake-is-cut .cake-cut-line {
+  animation:
+    revealCakeCut
+    .35s
+    ease
+    .82s
+    forwards;
+}
+
+.cake-is-cut .cake-cut-shadow {
+  animation:
+    revealCakeShadow
+    .45s
+    ease
+    .75s
+    forwards;
+}
+
+.cake-is-cut .real-cake-slice {
+  animation:
+    serveRealCakeSlice
+    1.25s
+    cubic-bezier(.18,.8,.2,1)
+    1.05s
+    forwards;
+}
+
+@keyframes realisticKnifeCut {
+
+  0% {
+    transform:
+      translate(45px,-5px)
+      rotate(-27deg);
+  }
+
+  25% {
+    transform:
+      translate(15px,25px)
+      rotate(-27deg);
+  }
+
+  48% {
+    transform:
+      translate(-18px,68px)
+      rotate(-27deg);
+  }
+
+  70% {
+    transform:
+      translate(-50px,110px)
+      rotate(-27deg);
+  }
+
+  100% {
+    transform:
+      translate(-78px,150px)
+      rotate(-27deg);
+  }
+}
+
+@keyframes revealCakeCut {
+
+  from {
+    opacity: 0;
+    height: 0;
+  }
+
+  to {
+    opacity: 1;
+    height: 222px;
+  }
+}
+
+@keyframes revealCakeShadow {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: .8;
+  }
+}
+
+@keyframes serveRealCakeSlice {
+
+  0% {
+    opacity: 0;
+    transform:
+      translate(-50%,-12px)
+      rotate(-2deg)
+      scale(.65);
+  }
+
+  25% {
+    opacity: 1;
+    transform:
+      translate(-50%,-52px)
+      rotate(3deg)
+      scale(.82);
+  }
+
+  55% {
+    transform:
+      translate(-50%,-72px)
+      rotate(-4deg)
+      scale(.94);
+  }
+
+  78% {
+    transform:
+      translate(-50%,4px)
+      rotate(2deg)
+      scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translate(-50%,0)
+      rotate(-2deg)
+      scale(1);
+  }
+}
+
+/* ---------- crumbs ---------- */
+
+.real-cake-crumbs {
+  position: absolute;
+  left: 50%;
+  bottom: 62px;
+  width: 320px;
+  height: 70px;
+  transform: translateX(-50%);
+  z-index: 25;
+  pointer-events: none;
+}
+
+.real-cake-crumbs i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e99ab9;
+  opacity: 0;
+}
+
+.cake-is-cut .real-cake-crumbs i {
+  animation: cakeCrumbFall .8s ease forwards;
+}
+
+.real-cake-crumbs i:nth-child(1) {
+  left: 42%;
+  animation-delay: .70s;
+}
+
+.real-cake-crumbs i:nth-child(2) {
+  left: 47%;
+  animation-delay: .82s;
+}
+
+.real-cake-crumbs i:nth-child(3) {
+  left: 52%;
+  animation-delay: .76s;
+}
+
+.real-cake-crumbs i:nth-child(4) {
+  left: 58%;
+  animation-delay: .91s;
+}
+
+.real-cake-crumbs i:nth-child(5) {
+  left: 62%;
+  animation-delay: .80s;
+}
+
+.real-cake-crumbs i:nth-child(6) {
+  left: 68%;
+  animation-delay: .96s;
+}
+
+.real-cake-crumbs i:nth-child(7) {
+  left: 38%;
+  animation-delay: .87s;
+}
+
+.real-cake-crumbs i:nth-child(8) {
+  left: 72%;
+  animation-delay: .74s;
+}
+
+.real-cake-crumbs i:nth-child(9) {
+  left: 56%;
+  animation-delay: 1s;
+}
+
+.real-cake-crumbs i:nth-child(10) {
+  left: 45%;
+  animation-delay: .93s;
+}
+
+@keyframes cakeCrumbFall {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateY(-20px)
+      scale(.5);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .65;
+    transform:
+      translateY(40px)
+      scale(1);
+  }
+}
+
+/* ---------- screen fitting ---------- */
+
+@media (min-width: 1024px) {
+
+  .realistic-birthday-cake {
+    transform: scale(.88) !important;
+    transform-origin: center top;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .realistic-birthday-cake {
+    transform: scale(.94) !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .realistic-birthday-cake {
+    transform: scale(.76) !important;
+    margin-top: -8px !important;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .realistic-birthday-cake {
+    transform: scale(.62) !important;
+    transform-origin: center top;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .real-flame {
+    animation: none !important;
+  }
+
+  .cake-is-cut .real-knife,
+  .cake-is-cut .cake-cut-line,
+  .cake-is-cut .cake-cut-shadow,
+  .cake-is-cut .real-cake-slice,
+  .cake-is-cut .real-cake-crumbs i {
+    animation: none !important;
+  }
+
+  .real-cake-slice {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   CAKE SCREEN — FIT EVERYTHING INSIDE VIEWPORT
+   ========================================================= */
+
+.cake-cut-screen {
+  height: 100vh !important;
+  height: 100svh !important;
+  min-height: 0 !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 18px 30px 92px !important;
+  box-sizing: border-box !important;
+}
+
+.cake-intro {
+  width: 100% !important;
+  max-width: 1100px !important;
+  height: 100% !important;
+  max-height: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  box-sizing: border-box !important;
+}
+
+/* Heading */
+.cake-intro .small-caps {
+  margin: 0 0 2px !important;
+  flex-shrink: 0 !important;
+}
+
+.cake-intro h2 {
+  margin: 0 !important;
+  line-height: .88 !important;
+  flex-shrink: 0 !important;
+}
+
+.cake-intro .cake-subtitle {
+  margin: 12px 0 0 !important;
+  line-height: 1.35 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Cake occupies the middle but cannot push button away */
+.cake-intro .realistic-birthday-cake,
+.cake-intro .birthday-cake {
+  flex: 0 1 auto !important;
+  margin: 0 auto !important;
+  flex-shrink: 1 !important;
+}
+
+/* CUT THE CAKE button */
+.cake-intro .cut-cake-button {
+  position: relative !important;
+
+  z-index: 100 !important;
+
+  flex-shrink: 0 !important;
+
+  margin: -8px auto 0 !important;
+
+  transform: none !important;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Completed state also stays inside viewport */
+.cake-intro .cake-cut-complete {
+  position: relative !important;
+
+  z-index: 100 !important;
+
+  flex-shrink: 0 !important;
+
+  margin: -8px auto 0 !important;
+
+  transform: none !important;
+}
+
+/* =========================================================
+   NORMAL LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .cake-cut-screen {
+    padding:
+      10px
+      30px
+      82px !important;
+  }
+
+  .cake-intro h2 {
+    font-size:
+      clamp(62px, 7vw, 104px) !important;
+  }
+
+  .cake-intro .cake-subtitle {
+    margin-top: 8px !important;
+    font-size: 17px !important;
+  }
+
+  .cake-intro .realistic-birthday-cake {
+    transform: scale(.72) !important;
+    transform-origin: center top !important;
+
+    margin-top: -8px !important;
+    margin-bottom: -72px !important;
+  }
+
+  .cake-intro .cut-cake-button {
+    margin-top: 0 !important;
+  }
+}
+
+/* =========================================================
+   1200+ DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+  .cake-intro .realistic-birthday-cake {
+    transform: scale(.78) !important;
+    margin-top: -5px !important;
+    margin-bottom: -58px !important;
+  }
+}
+
+/* =========================================================
+   SHORT LAPTOP — 700-800px HIGH
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-cut-screen {
+    padding:
+      4px
+      25px
+      72px !important;
+  }
+
+  .cake-intro h2 {
+    font-size:
+      clamp(54px, 7vw, 82px) !important;
+    line-height: .86 !important;
+  }
+
+  .cake-intro .cake-subtitle {
+    margin-top: 6px !important;
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+  }
+
+  .cake-intro .realistic-birthday-cake {
+    transform: scale(.62) !important;
+    transform-origin: center top !important;
+
+    margin-top: -12px !important;
+    margin-bottom: -105px !important;
+  }
+
+  .cake-intro .cut-cake-button {
+    margin-top: 0 !important;
+  }
+}
+
+/* =========================================================
+   VERY SHORT LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 700px) {
+
+  .cake-cut-screen {
+    padding:
+      2px
+      20px
+      64px !important;
+  }
+
+  .cake-intro h2 {
+    font-size:
+      clamp(46px, 6vw, 68px) !important;
+  }
+
+  .cake-intro .cake-subtitle {
+    font-size: 14px !important;
+    margin-top: 3px !important;
+  }
+
+  .cake-intro .realistic-birthday-cake {
+    transform: scale(.52) !important;
+    margin-top: -18px !important;
+    margin-bottom: -140px !important;
+  }
+}
+
+/* =========================================================
+   IMPORTANT:
+   Never allow the button below the viewport.
+   ========================================================= */
+
+.cake-cut-screen .cut-cake-button,
+.cake-cut-screen .cake-cut-complete {
+  max-height: 55px !important;
+}
+
+.cake-cut-screen .cut-cake-button {
+  min-height: 48px !important;
+}
+
+/* =========================================================
+   CAKE BUTTON — FINAL POSITION
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .cake-intro .cut-cake-button {
+    transform: translateY(28px) !important;
+    margin-top: 0 !important;
+  }
+
+  .cake-intro .cake-cut-complete {
+    transform: translateY(28px) !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-intro .cut-cake-button {
+    transform: translateY(20px) !important;
+  }
+
+  .cake-intro .cake-cut-complete {
+    transform: translateY(20px) !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 700px) {
+
+  .cake-intro .cut-cake-button {
+    transform: translateY(12px) !important;
+  }
+
+  .cake-intro .cake-cut-complete {
+    transform: translateY(12px) !important;
+  }
+}
+
+/* =========================================================
+   FINAL CUT BUTTON POSITION FIX
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cut-cake-button {
+  position: relative !important;
+  top: 32px !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  margin-top: 0 !important;
+  margin-bottom: 32px !important;
+
+  transform: none !important;
+
+  z-index: 999 !important;
+}
+
+/* Keep completed state in the same visual position */
+.cake-cut-screen .cake-intro .cake-cut-complete {
+  position: relative !important;
+  top: 32px !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  margin-top: 0 !important;
+  margin-bottom: 32px !important;
+
+  transform: none !important;
+
+  z-index: 999 !important;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    top: 32px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-cut-complete {
+    top: 32px !important;
+  }
+}
+
+/* Short laptop */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    top: 24px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-cut-complete {
+    top: 24px !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 700px) {
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    top: 16px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-cut-complete {
+    top: 16px !important;
+  }
+}
+
+
+/* =========================================================
+   CAKE SCREEN — FINAL TYPOGRAPHY & COMPOSITION
+   ========================================================= */
+
+.cake-cut-screen {
+  box-sizing: border-box !important;
+}
+
+/* Main content wrapper */
+.cake-cut-screen .cake-intro {
+  position: relative !important;
+  width: min(1100px, 94vw) !important;
+  max-width: 1100px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  text-align: center !important;
+}
+
+/* ---------------------------------------------------------
+   SMALL LABEL
+   --------------------------------------------------------- */
+
+.cake-cut-screen .cake-intro .small-caps {
+  margin: 0 0 8px !important;
+
+  font-size: clamp(10px, 1vw, 14px) !important;
+  line-height: 1.2 !important;
+
+  letter-spacing: .34em !important;
+  font-weight: 700 !important;
+
+  color: rgba(230,190,255,.92) !important;
+
+  text-align: center !important;
+
+  white-space: nowrap !important;
+}
+
+/* ---------------------------------------------------------
+   MAIN HEADING
+   --------------------------------------------------------- */
+
+.cake-cut-screen .cake-intro h2 {
+  width: 100% !important;
+
+  margin: 0 !important;
+
+  font-size: clamp(56px, 6.4vw, 92px) !important;
+  line-height: .91 !important;
+
+  letter-spacing: -.045em !important;
+  font-weight: 700 !important;
+
+  text-align: center !important;
+
+  color: #ffffff !important;
+
+  text-wrap: balance !important;
+
+  position: relative;
+  z-index: 5;
+}
+
+/* Gradient second line */
+.cake-cut-screen .cake-intro h2 span {
+  display: inline-block !important;
+
+  margin-top: 3px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #b77cff 0%,
+      #e75eb8 42%,
+      #d69ad7 68%,
+      #65dff2 100%
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  -webkit-text-fill-color: transparent !important;
+
+  color: transparent !important;
+
+  filter:
+    drop-shadow(0 5px 20px rgba(190,80,255,.14));
+}
+
+/* ---------------------------------------------------------
+   SUBTITLE
+   --------------------------------------------------------- */
+
+.cake-cut-screen .cake-intro .cake-subtitle {
+  width: min(650px, 90vw) !important;
+
+  margin: 14px auto 0 !important;
+
+  font-size: clamp(14px, 1.45vw, 19px) !important;
+  line-height: 1.55 !important;
+
+  letter-spacing: .005em !important;
+
+  color: rgba(225,220,235,.78) !important;
+
+  text-align: center !important;
+
+  position: relative;
+  z-index: 5;
+}
+
+/* ---------------------------------------------------------
+   CAKE POSITION
+   --------------------------------------------------------- */
+
+.cake-cut-screen .cake-intro .realistic-birthday-cake {
+  position: relative !important;
+
+  flex-shrink: 0 !important;
+
+  margin-top: 2px !important;
+
+  margin-bottom: -55px !important;
+}
+
+/* ---------------------------------------------------------
+   BUTTON
+   --------------------------------------------------------- */
+
+.cake-cut-screen .cake-intro .cut-cake-button {
+  position: relative !important;
+
+  top: 0 !important;
+
+  margin-top: 0 !important;
+
+  width: 370px !important;
+  height: 70px !important;
+
+  min-width: 370px !important;
+  min-height: 70px !important;
+
+  padding: 0 34px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+
+  border: 0 !important;
+  border-radius: 999px !important;
+
+  font-size: 18px !important;
+  line-height: 1 !important;
+
+  letter-spacing: .12em !important;
+  font-weight: 800 !important;
+
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9a35ed 0%,
+      #c52cda 45%,
+      #ee4d94 100%
+    ) !important;
+
+  box-shadow:
+    0 16px 35px rgba(174,50,229,.32),
+    0 5px 12px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.24) !important;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease !important;
+
+  z-index: 100 !important;
+}
+
+/* Button icon */
+.cake-cut-screen .cake-intro .cut-cake-button span {
+  font-size: 22px !important;
+  line-height: 1 !important;
+
+  filter:
+    drop-shadow(0 2px 3px rgba(0,0,0,.25));
+}
+
+/* Button hover */
+.cake-cut-screen .cake-intro .cut-cake-button:hover {
+  transform: translateY(-3px) !important;
+
+  box-shadow:
+    0 20px 42px rgba(174,50,229,.42),
+    0 7px 16px rgba(0,0,0,.2),
+    inset 0 1px 0 rgba(255,255,255,.3) !important;
+
+  filter: brightness(1.06);
+}
+
+/* Button active */
+.cake-cut-screen .cake-intro .cut-cake-button:active {
+  transform: translateY(1px) !important;
+}
+
+/* ---------------------------------------------------------
+   COMPLETION TEXT
+   --------------------------------------------------------- */
+
+.cake-cut-screen .cake-intro .cake-cut-complete {
+  position: relative !important;
+
+  top: 0 !important;
+
+  margin-top: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  text-align: center !important;
+
+  z-index: 100 !important;
+}
+
+.cake-cut-screen .cake-intro .cake-cut-complete h3 {
+  margin: 8px 0 6px !important;
+
+  font-size: clamp(28px, 3vw, 42px) !important;
+  line-height: 1 !important;
+
+  letter-spacing: .04em !important;
+
+  color: #ffffff !important;
+}
+
+.cake-cut-screen .cake-intro .cake-cut-complete p {
+  margin: 0 0 15px !important;
+
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+
+  color: rgba(235,225,242,.78) !important;
+}
+
+.cake-cut-screen .cake-intro .cake-next-button {
+  min-width: 170px !important;
+  min-height: 50px !important;
+
+  border-radius: 999px !important;
+}
+
+/* Celebration text */
+.cake-cut-screen .celebration-burst {
+  margin-bottom: 3px !important;
+
+  font-size: 20px !important;
+  letter-spacing: .05em !important;
+}
+
+/* =========================================================
+   DESKTOP — 1024+
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .cake-cut-screen {
+    padding:
+      8px
+      30px
+      70px !important;
+  }
+
+  .cake-cut-screen .cake-intro .small-caps {
+    margin-bottom: 7px !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: clamp(58px, 6vw, 88px) !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    margin-top: 10px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    margin-top: -2px !important;
+    margin-bottom: -48px !important;
+
+    transform: scale(.78) !important;
+    transform-origin: center top !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    margin-top: 0 !important;
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 88px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 18px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.82) !important;
+    margin-bottom: -42px !important;
+  }
+}
+
+/* =========================================================
+   SHORT LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-cut-screen {
+    padding:
+      3px
+      24px
+      60px !important;
+  }
+
+  .cake-cut-screen .cake-intro .small-caps {
+    font-size: 10px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: clamp(48px, 6vw, 72px) !important;
+    line-height: .88 !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    margin-top: 7px !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.66) !important;
+    margin-top: -8px !important;
+    margin-bottom: -100px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 330px !important;
+    min-width: 330px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   VERY SHORT SCREEN
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 700px) {
+
+  .cake-cut-screen {
+    padding:
+      1px
+      20px
+      55px !important;
+  }
+
+  .cake-cut-screen .cake-intro .small-caps {
+    display: none !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: clamp(43px, 5.5vw, 62px) !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    margin-top: 5px !important;
+    font-size: 13px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.54) !important;
+    margin-top: -15px !important;
+    margin-bottom: -135px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 300px !important;
+    min-width: 300px !important;
+    height: 54px !important;
+    min-height: 54px !important;
+
+    font-size: 15px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .cake-cut-screen {
+    padding:
+      12px
+      18px
+      70px !important;
+  }
+
+  .cake-cut-screen .cake-intro .small-caps {
+    font-size: 9px !important;
+    letter-spacing: .24em !important;
+    margin-bottom: 7px !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: clamp(43px, 13vw, 66px) !important;
+    line-height: .9 !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    width: 92vw !important;
+
+    margin-top: 9px !important;
+
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.58) !important;
+    margin-top: -10px !important;
+    margin-bottom: -125px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: min(330px, 82vw) !important;
+    min-width: 0 !important;
+
+    height: 58px !important;
+    min-height: 58px !important;
+
+    font-size: 14px !important;
+  }
+}
+
+
+/* =========================================================
+   CAKE SCREEN — CLEAN FINAL COMPOSITION
+   ========================================================= */
+
+.cake-cut-screen {
+  height: 100vh !important;
+  height: 100svh !important;
+  min-height: 0 !important;
+  max-height: 100vh !important;
+
+  overflow: hidden !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-sizing: border-box !important;
+  padding: 0 24px !important;
+}
+
+.cake-cut-screen .cake-intro {
+  width: min(1000px, 94vw) !important;
+  height: 100% !important;
+  max-height: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  justify-content: flex-start !important;
+
+  box-sizing: border-box !important;
+
+  text-align: center !important;
+}
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .small-caps {
+  flex-shrink: 0 !important;
+
+  margin: 8px 0 5px !important;
+
+  font-size: 11px !important;
+  line-height: 1 !important;
+
+  letter-spacing: .32em !important;
+  font-weight: 700 !important;
+
+  color: #d9a8ff !important;
+}
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.cake-cut-screen .cake-intro h2 {
+  flex-shrink: 0 !important;
+
+  width: 100% !important;
+
+  margin: 0 !important;
+
+  font-size: clamp(55px, 6vw, 78px) !important;
+  line-height: .9 !important;
+
+  letter-spacing: -.035em !important;
+  font-weight: 700 !important;
+
+  text-align: center !important;
+}
+
+.cake-cut-screen .cake-intro h2 span {
+  display: inline-block !important;
+
+  margin-top: 2px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #b87cff 0%,
+      #df5fb8 42%,
+      #d99bd9 67%,
+      #61dff1 100%
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+
+  filter: none !important;
+}
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cake-subtitle {
+  flex-shrink: 0 !important;
+
+  width: min(620px, 90vw) !important;
+
+  margin: 12px auto 0 !important;
+
+  font-size: 16px !important;
+  line-height: 1.45 !important;
+
+  color: rgba(232,225,239,.78) !important;
+
+  text-align: center !important;
+
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* =========================================================
+   CAKE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .realistic-birthday-cake {
+  flex-shrink: 0 !important;
+
+  width: 560px !important;
+  height: 350px !important;
+
+  margin: 4px auto -72px !important;
+
+  transform: scale(.86) !important;
+  transform-origin: center top !important;
+
+  position: relative !important;
+
+  z-index: 5 !important;
+}
+
+/* Keep candle/knife from visually fighting the subtitle */
+.cake-cut-screen .real-candle,
+.cake-cut-screen .real-knife {
+  z-index: 20 !important;
+}
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cut-cake-button {
+  flex-shrink: 0 !important;
+
+  position: relative !important;
+
+  top: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: 310px !important;
+  min-width: 310px !important;
+
+  height: 60px !important;
+  min-height: 60px !important;
+
+  margin: 0 auto !important;
+  padding: 0 25px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+
+  border: 0 !important;
+  border-radius: 999px !important;
+
+  font-size: 16px !important;
+  line-height: 1 !important;
+
+  letter-spacing: .105em !important;
+  font-weight: 800 !important;
+
+  color: #fff !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9c36e9 0%,
+      #c933d8 48%,
+      #ec4c93 100%
+    ) !important;
+
+  box-shadow:
+    0 14px 30px rgba(171,47,226,.28),
+    0 4px 10px rgba(0,0,0,.2),
+    inset 0 1px 0 rgba(255,255,255,.25) !important;
+
+  transform: none !important;
+
+  z-index: 100 !important;
+}
+
+.cake-cut-screen .cake-intro .cut-cake-button span {
+  font-size: 19px !important;
+}
+
+/* Button hover */
+.cake-cut-screen .cake-intro .cut-cake-button:hover {
+  transform: translateY(-3px) !important;
+
+  box-shadow:
+    0 18px 34px rgba(171,47,226,.36),
+    0 6px 14px rgba(0,0,0,.2),
+    inset 0 1px 0 rgba(255,255,255,.3) !important;
+}
+
+/* =========================================================
+   COMPLETION STATE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cake-cut-complete {
+  flex-shrink: 0 !important;
+
+  position: relative !important;
+
+  top: 0 !important;
+
+  margin: 0 auto !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  text-align: center !important;
+
+  z-index: 100 !important;
+}
+
+.cake-cut-screen .cake-cut-complete h3 {
+  margin: 5px 0 5px !important;
+
+  font-size: 32px !important;
+  line-height: 1 !important;
+}
+
+.cake-cut-screen .cake-cut-complete p {
+  margin: 0 0 12px !important;
+
+  font-size: 14px !important;
+}
+
+.cake-cut-screen .celebration-burst {
+  font-size: 18px !important;
+  margin: 0 !important;
+}
+
+/* =========================================================
+   1200+ DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 78px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.90) !important;
+
+    margin-top: 5px !important;
+    margin-bottom: -85px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 315px !important;
+    min-width: 315px !important;
+  }
+}
+
+/* =========================================================
+   1024–1199
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 68px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 15px !important;
+    margin-top: 10px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.80) !important;
+
+    margin-top: 4px !important;
+    margin-bottom: -70px !important;
+  }
+}
+
+/* =========================================================
+   SHORT LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-cut-screen .cake-intro .small-caps {
+    margin-top: 4px !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 58px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 14px !important;
+    margin-top: 7px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.70) !important;
+
+    margin-top: 0 !important;
+    margin-bottom: -105px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 295px !important;
+    min-width: 295px !important;
+
+    height: 56px !important;
+    min-height: 56px !important;
+
+    font-size: 15px !important;
+  }
+}
+
+/* =========================================================
+   VERY SHORT SCREEN
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 700px) {
+
+  .cake-cut-screen .cake-intro .small-caps {
+    display: none !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 50px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 13px !important;
+    margin-top: 5px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.58) !important;
+
+    margin-top: -8px !important;
+    margin-bottom: -130px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 280px !important;
+    min-width: 280px !important;
+
+    height: 52px !important;
+    min-height: 52px !important;
+
+    font-size: 14px !important;
+  }
+}
+
+
+/* =========================================================
+   CAKE SCREEN — BALANCED HERO COMPOSITION
+   ========================================================= */
+
+.cake-cut-screen {
+  height: 100vh !important;
+  height: 100svh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.cake-cut-screen .cake-intro {
+  width: min(1100px, 94vw) !important;
+  height: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  text-align: center !important;
+
+  /* Move the complete composition away from the top edge */
+  padding-top: 18px !important;
+
+  box-sizing: border-box !important;
+}
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .small-caps {
+  display: block !important;
+
+  margin: 0 0 7px !important;
+
+  font-size: 11px !important;
+  line-height: 1.1 !important;
+
+  letter-spacing: .32em !important;
+  font-weight: 700 !important;
+
+  color: rgba(221,176,255,.95) !important;
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro h2 {
+  margin: 0 !important;
+
+  font-size: clamp(62px, 6vw, 86px) !important;
+  line-height: .88 !important;
+
+  letter-spacing: -.045em !important;
+  font-weight: 700 !important;
+
+  text-align: center !important;
+}
+
+.cake-cut-screen .cake-intro h2 span {
+  display: inline-block !important;
+
+  margin-top: 3px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #b978ff 0%,
+      #e35db8 42%,
+      #d49ad9 68%,
+      #62dff2 100%
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cake-subtitle {
+  width: min(650px, 90vw) !important;
+
+  margin: 13px auto 0 !important;
+
+  font-size: 16px !important;
+  line-height: 1.45 !important;
+
+  color: rgba(231,224,239,.82) !important;
+
+  text-align: center !important;
+
+  z-index: 30 !important;
+}
+
+/* =========================================================
+   CAKE — BIGGER
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .realistic-birthday-cake {
+  width: 560px !important;
+  height: 350px !important;
+
+  flex-shrink: 0 !important;
+
+  margin-top: 0 !important;
+
+  /*
+     Bigger than current screenshot.
+     The negative bottom margin allows the visual
+     cake canvas to overlap its own empty internal
+     space without pushing the CTA too far down.
+  */
+  margin-bottom: -68px !important;
+
+  transform: scale(1.02) !important;
+  transform-origin: center top !important;
+
+  position: relative !important;
+
+  z-index: 5 !important;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cut-cake-button {
+  position: relative !important;
+
+  top: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: 330px !important;
+  min-width: 330px !important;
+
+  height: 62px !important;
+  min-height: 62px !important;
+
+  margin: 0 auto !important;
+
+  padding: 0 28px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 13px !important;
+
+  border: 0 !important;
+  border-radius: 999px !important;
+
+  font-size: 16px !important;
+  letter-spacing: .11em !important;
+  font-weight: 800 !important;
+
+  color: #fff !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9c35ed 0%,
+      #c932d9 48%,
+      #ed4b94 100%
+    ) !important;
+
+  box-shadow:
+    0 15px 34px rgba(169,47,226,.31),
+    0 5px 12px rgba(0,0,0,.2),
+    inset 0 1px 0 rgba(255,255,255,.28) !important;
+
+  transform: none !important;
+
+  z-index: 100 !important;
+}
+
+.cake-cut-screen .cake-intro .cut-cake-button span {
+  font-size: 20px !important;
+}
+
+.cake-cut-screen .cake-intro .cut-cake-button:hover {
+  transform: translateY(-3px) !important;
+
+  box-shadow:
+    0 20px 40px rgba(169,47,226,.4),
+    0 7px 16px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.3) !important;
+}
+
+/* =========================================================
+   COMPLETION STATE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cake-cut-complete {
+  position: relative !important;
+
+  top: 0 !important;
+
+  margin: 0 auto !important;
+
+  z-index: 100 !important;
+
+  text-align: center !important;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+  .cake-cut-screen .cake-intro {
+    padding-top: 22px !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 88px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    margin-top: 14px !important;
+    font-size: 17px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(1.06) !important;
+    margin-bottom: -78px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 340px !important;
+    min-width: 340px !important;
+  }
+}
+
+/* =========================================================
+   1024–1399
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+
+  .cake-cut-screen .cake-intro {
+    padding-top: 14px !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 68px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.92) !important;
+    margin-bottom: -65px !important;
+  }
+}
+
+/* =========================================================
+   SHORT LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-cut-screen .cake-intro {
+    padding-top: 7px !important;
+  }
+
+  .cake-cut-screen .cake-intro .small-caps {
+    margin-bottom: 4px !important;
+    font-size: 10px !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 58px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    margin-top: 8px !important;
+    font-size: 14px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.78) !important;
+    margin-top: -2px !important;
+    margin-bottom: -90px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 300px !important;
+    min-width: 300px !important;
+    height: 57px !important;
+    min-height: 57px !important;
+    font-size: 15px !important;
+  }
+}
+
+/* =========================================================
+   VERY SHORT SCREEN
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 700px) {
+
+  .cake-cut-screen .cake-intro {
+    padding-top: 2px !important;
+  }
+
+  .cake-cut-screen .cake-intro .small-caps {
+    display: none !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 50px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    margin-top: 5px !important;
+    font-size: 13px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.64) !important;
+    margin-top: -5px !important;
+    margin-bottom: -125px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 280px !important;
+    min-width: 280px !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    font-size: 14px !important;
+  }
+}
+
+
+/* =========================================================
+   CAKE SCREEN — FULL VIEWPORT CINEMATIC LAYOUT
+   Uses the complete PC/laptop screen
+   ========================================================= */
+
+.cake-cut-screen {
+  position: relative !important;
+
+  width: 100vw !important;
+  max-width: none !important;
+
+  height: 100vh !important;
+  height: 100svh !important;
+
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+
+  max-height: none !important;
+
+  overflow: hidden !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: block !important;
+
+  box-sizing: border-box !important;
+}
+
+/* Full-screen content canvas */
+.cake-cut-screen .cake-intro {
+  position: relative !important;
+
+  width: 100vw !important;
+  max-width: none !important;
+
+  height: 100vh !important;
+  height: 100svh !important;
+
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+
+  margin: 0 !important;
+  padding: 2vh 3vw 3vh !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  justify-content: flex-start !important;
+
+  text-align: center !important;
+}
+
+/* =========================================================
+   TOP LABEL
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .small-caps {
+  flex-shrink: 0 !important;
+
+  margin: 0 0 .8vh !important;
+
+  font-size: clamp(10px, .75vw, 15px) !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: .38em !important;
+
+  font-weight: 700 !important;
+
+  color: rgba(224,180,255,.95) !important;
+
+  white-space: nowrap !important;
+}
+
+/* =========================================================
+   LARGE FULL-SCREEN TITLE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro h2 {
+  width: 100% !important;
+
+  margin: 0 !important;
+
+  font-size: clamp(60px, 7vw, 112px) !important;
+
+  line-height: .87 !important;
+
+  letter-spacing: -.045em !important;
+
+  font-weight: 700 !important;
+
+  text-align: center !important;
+
+  white-space: normal !important;
+
+  flex-shrink: 0 !important;
+}
+
+.cake-cut-screen .cake-intro h2 span {
+  display: inline-block !important;
+
+  margin-top: .2vh !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #b978ff 0%,
+      #e45db8 38%,
+      #d79ad9 68%,
+      #61def1 100%
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cake-subtitle {
+  width: min(700px, 80vw) !important;
+
+  margin: 1.8vh auto 0 !important;
+
+  font-size: clamp(14px, 1.15vw, 20px) !important;
+
+  line-height: 1.5 !important;
+
+  color: rgba(232,226,240,.82) !important;
+
+  text-align: center !important;
+
+  flex-shrink: 0 !important;
+
+  position: relative !important;
+
+  z-index: 30 !important;
+}
+
+/* =========================================================
+   LARGE CINEMATIC CAKE
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .realistic-birthday-cake {
+  position: relative !important;
+
+  width: 560px !important;
+  height: 350px !important;
+
+  flex-shrink: 0 !important;
+
+  margin: 1vh auto -3.5vh !important;
+
+  /*
+     Large enough to visually anchor the screen.
+  */
+  transform: scale(1.18) !important;
+
+  transform-origin: center top !important;
+
+  z-index: 5 !important;
+}
+
+/* =========================================================
+   FULL-WIDTH VISUAL LIGHT
+   ========================================================= */
+
+.cake-cut-screen::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 47%;
+
+  width: min(900px, 70vw);
+  height: min(500px, 60vh);
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(185,78,255,.10) 0%,
+      rgba(76,170,255,.035) 42%,
+      transparent 72%
+    );
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* Keep content above glow */
+.cake-cut-screen .cake-intro > * {
+  position: relative;
+}
+
+/* =========================================================
+   FULL-SCREEN CTA
+   ========================================================= */
+
+.cake-cut-screen .cake-intro .cut-cake-button {
+  position: relative !important;
+
+  flex-shrink: 0 !important;
+
+  top: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: clamp(280px, 22vw, 360px) !important;
+
+  min-width: 280px !important;
+
+  height: clamp(56px, 7vh, 68px) !important;
+
+  min-height: 56px !important;
+
+  margin: 0 auto !important;
+
+  padding: 0 30px !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 13px !important;
+
+  border: none !important;
+
+  border-radius: 999px !important;
+
+  font-size: clamp(14px, 1vw, 18px) !important;
+
+  letter-spacing: .12em !important;
+
+  font-weight: 800 !important;
+
+  color: #fff !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9935ed 0%,
+      #c832d9 48%,
+      #ed4c94 100%
+    ) !important;
+
+  box-shadow:
+    0 18px 40px rgba(165,48,226,.32),
+    0 5px 15px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.28) !important;
+
+  z-index: 100 !important;
+
+  transform: none !important;
+}
+
+.cake-cut-screen .cake-intro .cut-cake-button span {
+  font-size: clamp(18px, 1.3vw, 23px) !important;
+}
+
+.cake-cut-screen .cake-intro .cut-cake-button:hover {
+  transform: translateY(-4px) !important;
+
+  box-shadow:
+    0 23px 45px rgba(165,48,226,.42),
+    0 8px 18px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.32) !important;
+}
+
+/* =========================================================
+   1440px+ LARGE MONITOR
+   ========================================================= */
+
+@media (min-width: 1440px) {
+
+  .cake-cut-screen .cake-intro {
+    padding-top: 1.5vh !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: clamp(82px, 6.5vw, 112px) !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 19px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(1.28) !important;
+
+    margin-top: 1vh !important;
+    margin-bottom: -7vh !important;
+  }
+}
+
+/* =========================================================
+   1200–1439px
+   ========================================================= */
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 86px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(1.12) !important;
+
+    margin-top: .8vh !important;
+    margin-bottom: -5vh !important;
+  }
+}
+
+/* =========================================================
+   1024–1199px
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+  .cake-cut-screen .cake-intro {
+    padding-top: 1vh !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 68px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 15px !important;
+
+    margin-top: 1vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.94) !important;
+
+    margin-top: .5vh !important;
+    margin-bottom: -4vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 300px !important;
+  }
+}
+
+/* =========================================================
+   SHORT LAPTOP — 768px or less height
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 768px) {
+
+  .cake-cut-screen .cake-intro {
+    padding-top: .5vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .small-caps {
+    font-size: 9px !important;
+
+    margin-bottom: .4vh !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 58px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 13px !important;
+
+    margin-top: .8vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.76) !important;
+
+    margin-top: 0 !important;
+    margin-bottom: -7vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 290px !important;
+
+    height: 54px !important;
+    min-height: 54px !important;
+  }
+}
+
+/* =========================================================
+   VERY SHORT LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 680px) {
+
+  .cake-cut-screen .cake-intro .small-caps {
+    display: none !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: 50px !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    font-size: 12px !important;
+    margin-top: .5vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.64) !important;
+
+    margin-top: -.5vh !important;
+    margin-bottom: -10vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: 270px !important;
+
+    height: 50px !important;
+    min-height: 50px !important;
+
+    font-size: 13px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .cake-cut-screen .cake-intro {
+    padding:
+      2vh
+      12px
+      6vh !important;
+  }
+
+  .cake-cut-screen .cake-intro h2 {
+    font-size: clamp(46px, 13vw, 72px) !important;
+  }
+
+  .cake-cut-screen .cake-intro .cake-subtitle {
+    width: 92vw !important;
+    font-size: 13px !important;
+  }
+
+  .cake-cut-screen .cake-intro .realistic-birthday-cake {
+    transform: scale(.62) !important;
+
+    margin-top: 0 !important;
+    margin-bottom: -12vh !important;
+  }
+
+  .cake-cut-screen .cake-intro .cut-cake-button {
+    width: min(320px, 82vw) !important;
+
+    min-width: 0 !important;
+
+    height: 56px !important;
+    min-height: 56px !important;
+  }
+}
+
+
+/* =========================================================
+   CAKE CUT COMPLETE — NEXT BUTTON VIEWPORT FIX
+   ========================================================= */
+
+.cake-cut-screen .cake-cut-complete {
+  position: relative !important;
+
+  width: 100% !important;
+
+  margin: -8px auto 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  text-align: center !important;
+
+  z-index: 200 !important;
+}
+
+/* Celebration icons */
+.cake-cut-screen .cake-cut-complete .celebration-burst {
+  margin: 0 0 4px !important;
+
+  font-size: 18px !important;
+  line-height: 1 !important;
+
+  white-space: nowrap !important;
+}
+
+/* CAKE CUT title */
+.cake-cut-screen .cake-cut-complete h3 {
+  margin: 0 0 6px !important;
+
+  font-size: clamp(32px, 4vw, 54px) !important;
+  line-height: .95 !important;
+
+  letter-spacing: .015em !important;
+  font-weight: 800 !important;
+
+  color: #ffffff !important;
+
+  text-align: center !important;
+}
+
+/* Description */
+.cake-cut-screen .cake-cut-complete p {
+  margin: 0 0 14px !important;
+
+  font-size: clamp(13px, 1.1vw, 17px) !important;
+  line-height: 1.4 !important;
+
+  color: rgba(232,225,240,.82) !important;
+
+  text-align: center !important;
+}
+
+/* =========================================================
+   NEXT BUTTON
+   ========================================================= */
+
+.cake-cut-screen .cake-cut-complete .cake-next-button {
+  position: relative !important;
+
+  top: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: 210px !important;
+  min-width: 210px !important;
+
+  height: 56px !important;
+  min-height: 56px !important;
+
+  margin: 0 auto !important;
+  padding: 0 26px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 13px !important;
+
+  border: none !important;
+  border-radius: 999px !important;
+
+  font-size: 15px !important;
+  line-height: 1 !important;
+
+  font-weight: 800 !important;
+  letter-spacing: .16em !important;
+
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9634eb 0%,
+      #c831d8 48%,
+      #ed4c94 100%
+    ) !important;
+
+  box-shadow:
+    0 14px 30px rgba(169,48,226,.32),
+    0 5px 12px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.28) !important;
+
+  transform: none !important;
+
+  z-index: 300 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.cake-cut-screen .cake-cut-complete .cake-next-button span {
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+.cake-cut-screen .cake-cut-complete .cake-next-button:hover {
+  transform: translateY(-3px) !important;
+
+  box-shadow:
+    0 19px 38px rgba(169,48,226,.42),
+    0 7px 16px rgba(0,0,0,.23),
+    inset 0 1px 0 rgba(255,255,255,.32) !important;
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .cake-cut-screen .cake-cut-complete {
+    margin-top: -12px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete h3 {
+    font-size: 48px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete p {
+    margin-bottom: 12px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete .cake-next-button {
+    width: 220px !important;
+    min-width: 220px !important;
+
+    height: 55px !important;
+    min-height: 55px !important;
+  }
+}
+
+/* =========================================================
+   SHORT LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .cake-cut-screen .cake-cut-complete {
+    margin-top: -18px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete .celebration-burst {
+    font-size: 15px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete h3 {
+    font-size: 38px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete p {
+    font-size: 13px !important;
+    margin-bottom: 9px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete .cake-next-button {
+    width: 190px !important;
+    min-width: 190px !important;
+
+    height: 48px !important;
+    min-height: 48px !important;
+
+    font-size: 13px !important;
+  }
+}
+
+/* =========================================================
+   VERY SHORT SCREEN
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 700px) {
+
+  .cake-cut-screen .cake-cut-complete {
+    margin-top: -28px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete h3 {
+    font-size: 32px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete p {
+    font-size: 12px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .cake-cut-screen .cake-cut-complete .cake-next-button {
+    width: 175px !important;
+    min-width: 175px !important;
+
+    height: 44px !important;
+    min-height: 44px !important;
+
+    font-size: 12px !important;
+  }
+}
+
+
+/* =========================================================
+   NANCY — CINEMATIC BIRTHDAY INTRO
+   ========================================================= */
+
+.birthday-cinematic-intro {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(119,55,180,.20),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #05040f,
+      #0b0718 50%,
+      #060611
+    );
+
+  z-index: 99999;
+
+  cursor: pointer;
+
+  animation: introFadeIn .8s ease both;
+}
+
+.intro-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 650px;
+  height: 650px;
+
+  transform: translate(-50%,-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(177,92,255,.16),
+      rgba(73,214,255,.035) 45%,
+      transparent 70%
+    );
+
+  filter: blur(10px);
+
+  animation: introGlowPulse 4s ease-in-out infinite;
+}
+
+.intro-content {
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.intro-eyebrow {
+  margin: 0 0 16px;
+
+  font-size: 12px;
+
+  letter-spacing: .38em;
+
+  font-weight: 700;
+
+  color: rgba(222,182,255,.88);
+}
+
+.intro-content h1 {
+  margin: 0;
+
+  font-size: clamp(90px, 13vw, 180px);
+
+  line-height: .82;
+
+  letter-spacing: -.07em;
+
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      100deg,
+      #b879ff,
+      #f05eb9 45%,
+      #62ddf3
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  color: transparent;
+
+  filter:
+    drop-shadow(0 15px 40px rgba(171,75,255,.2));
+
+  animation: nancyReveal 1.2s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.intro-line {
+  margin: 28px 0 32px;
+
+  font-size: clamp(17px, 1.5vw, 23px);
+
+  color: rgba(239,233,245,.78);
+
+  letter-spacing: .01em;
+}
+
+.intro-start-button {
+  height: 58px;
+
+  padding: 0 32px;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  font-size: 14px;
+
+  letter-spacing: .13em;
+
+  font-weight: 800;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9a36ed,
+      #c934d9 50%,
+      #ed4d94
+    );
+
+  box-shadow:
+    0 16px 38px rgba(168,49,225,.32),
+    inset 0 1px 0 rgba(255,255,255,.3);
+
+  cursor: pointer;
+
+  animation: introButtonReveal 1s ease .65s both;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.intro-start-button span {
+  font-size: 19px;
+}
+
+.intro-start-button:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 22px 45px rgba(168,49,225,.45),
+    inset 0 1px 0 rgba(255,255,255,.35);
+}
+
+/* Stars */
+
+.intro-stars {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.intro-stars span {
+  position: absolute;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.8);
+
+  box-shadow:
+    0 0 8px rgba(214,180,255,.8);
+
+  animation:
+    introStarFloat
+    3.5s
+    ease-in-out
+    infinite;
+}
+
+@keyframes introFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nancyReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(35px)
+      scale(.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes introButtonReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes introGlowPulse {
+  0%,
+  100% {
+    opacity: .6;
+    transform:
+      translate(-50%,-50%)
+      scale(.92);
+  }
+
+  50% {
+    opacity: 1;
+    transform:
+      translate(-50%,-50%)
+      scale(1.08);
+  }
+}
+
+@keyframes introStarFloat {
+  0%,
+  100% {
+    opacity: .25;
+    transform: scale(.7);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+/* =========================================================
+   CANDLE BLOW-OUT
+   ========================================================= */
+
+.candle-is-out .real-flame {
+  animation:
+    candleBlowOut
+    .65s
+    cubic-bezier(.2,.8,.2,1)
+    forwards !important;
+}
+
+.candle-is-out::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: -5px;
+
+  width: 10px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  border-left: 2px solid rgba(220,220,235,.35);
+
+  opacity: 0;
+
+  animation:
+    candleSmoke
+    2.4s
+    ease-out
+    .35s
+    forwards;
+}
+
+@keyframes candleBlowOut {
+  0% {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      scale(1);
+  }
+
+  35% {
+    transform:
+      translateX(-62%)
+      scale(1.1,.75);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(-82%)
+      translateY(-10px)
+      scale(.25,.6);
+  }
+}
+
+@keyframes candleSmoke {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(-50%,0)
+      scale(.5);
+  }
+
+  25% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-20%,-42px)
+      scale(1.4);
+  }
+}
+
+/* =========================================================
+   MOBILE INTRO
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .intro-eyebrow {
+    font-size: 9px;
+
+    letter-spacing: .28em;
+  }
+
+  .intro-content h1 {
+    font-size: clamp(76px, 23vw, 130px);
+  }
+
+  .intro-line {
+    font-size: 15px;
+
+    margin:
+      22px 0
+      28px;
+  }
+
+  .intro-start-button {
+    height: 54px;
+
+    padding: 0 24px;
+
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .birthday-cinematic-intro *,
+  .intro-glow,
+  .intro-stars span {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   MESSAGE — FINAL CONTENT LAYOUT
+   ========================================================= */
+
+.message-section .message-card {
+  overflow: hidden !important;
+  justify-content: center !important;
+}
+
+.message-section .message-card .message-lead {
+  margin-bottom: 18px !important;
+}
+
+.message-section .message-card .message-support {
+  margin: 10px auto !important;
+  max-width: 1000px !important;
+  line-height: 1.45 !important;
+}
+
+.message-section .message-card .final-line {
+  margin-top: 18px !important;
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .message-section .message-card {
+    padding: 30px 70px !important;
+  }
+
+  .message-section .message-card .message-lead {
+    font-size: clamp(26px, 2.5vw, 38px) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .message-section .message-card .message-support {
+    font-size: 16px !important;
+    margin: 7px auto !important;
+    line-height: 1.35 !important;
+  }
+
+  .message-section .message-card .final-line {
+    margin-top: 12px !important;
+  }
+}
+
+
+/* =========================================================
+   MESSAGE SCREEN — FIT COMPLETE MESSAGE INSIDE CARD
+   ========================================================= */
+
+.message-section {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  overflow: hidden !important;
+  padding: 24px 5vw 28px !important;
+  box-sizing: border-box !important;
+}
+
+.message-section .message-card {
+  width: min(1180px, 92vw) !important;
+  height: min(530px, calc(100vh - 105px)) !important;
+  min-height: 0 !important;
+  max-height: calc(100vh - 105px) !important;
+  box-sizing: border-box !important;
+
+  padding: 28px 60px 24px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+
+  overflow: hidden !important;
+}
+
+.message-section .message-memory-image {
+  width: 420px !important;
+  height: 120px !important;
+  margin: 0 auto 18px !important;
+  flex-shrink: 0 !important;
+}
+
+.message-section .message-memory-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.message-section .quote-mark {
+  position: absolute !important;
+  top: 34px !important;
+  left: 48px !important;
+  font-size: 58px !important;
+  line-height: 1 !important;
+}
+
+.message-section .message-lead {
+  flex-shrink: 0 !important;
+  margin: 0 auto 12px !important;
+  max-width: 1050px !important;
+  font-size: clamp(25px, 2.4vw, 37px) !important;
+  line-height: 1.28 !important;
+}
+
+.message-section .message-support {
+  flex-shrink: 0 !important;
+  margin: 7px auto !important;
+  max-width: 1050px !important;
+  font-size: clamp(14px, 1.15vw, 17px) !important;
+  line-height: 1.38 !important;
+}
+
+.message-section .final-line {
+  flex-shrink: 0 !important;
+  margin: 12px auto 0 !important;
+  font-size: clamp(15px, 1.25vw, 19px) !important;
+  line-height: 1.35 !important;
+}
+
+/* Laptop / short desktop screens */
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .message-section {
+    padding: 14px 4vw 18px !important;
+  }
+
+  .message-section .message-card {
+    height: calc(100vh - 78px) !important;
+    max-height: calc(100vh - 78px) !important;
+    padding: 20px 52px 18px !important;
+  }
+
+  .message-section .message-memory-image {
+    width: 360px !important;
+    height: 92px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .message-section .quote-mark {
+    top: 24px !important;
+    left: 40px !important;
+    font-size: 50px !important;
+  }
+
+  .message-section .message-lead {
+    font-size: clamp(22px, 2.1vw, 31px) !important;
+    line-height: 1.22 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .message-section .message-support {
+    font-size: 14px !important;
+    line-height: 1.28 !important;
+    margin: 5px auto !important;
+  }
+
+  .message-section .final-line {
+    font-size: 15px !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* Very short laptop screens */
+@media (min-width: 1024px) and (max-height: 650px) {
+
+  .message-section {
+    padding: 8px 3vw 10px !important;
+  }
+
+  .message-section .message-card {
+    height: calc(100vh - 52px) !important;
+    max-height: calc(100vh - 52px) !important;
+    padding: 12px 45px 12px !important;
+  }
+
+  .message-section .message-memory-image {
+    width: 300px !important;
+    height: 70px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .message-section .quote-mark {
+    top: 15px !important;
+    left: 32px !important;
+    font-size: 42px !important;
+  }
+
+  .message-section .message-lead {
+    font-size: 21px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .message-section .message-support {
+    font-size: 12.5px !important;
+    line-height: 1.22 !important;
+    margin: 3px auto !important;
+  }
+
+  .message-section .final-line {
+    font-size: 13px !important;
+    margin-top: 5px !important;
+  }
+}
+
+
+/* =========================================================
+   MESSAGE TYPOGRAPHY — FINAL SIZE BALANCE
+   ========================================================= */
+
+.message-section .message-card .message-lead {
+  font-size: clamp(28px, 2.25vw, 38px) !important;
+  line-height: 1.25 !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  max-width: 1100px !important;
+  margin: 0 auto 18px !important;
+}
+
+.message-section .message-card .message-support {
+  font-size: clamp(16px, 1.25vw, 20px) !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  max-width: 1100px !important;
+  margin: 9px auto !important;
+}
+
+.message-section .message-card .final-line {
+  font-size: clamp(17px, 1.35vw, 21px) !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+  margin: 14px auto 0 !important;
+}
+
+.message-section .message-card .final-line span {
+  font-size: 1.05em !important;
+  font-weight: 600 !important;
+}
+
+/* Normal desktop */
+@media (min-width: 1200px) {
+  .message-section .message-card .message-lead {
+    font-size: 36px !important;
+  }
+
+  .message-section .message-card .message-support {
+    font-size: 18px !important;
+  }
+
+  .message-section .message-card .final-line {
+    font-size: 19px !important;
+  }
+}
+
+/* Laptop screens */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .message-section .message-card {
+    padding: 22px 55px 18px !important;
+  }
+
+  .message-section .message-memory-image {
+    width: 350px !important;
+    height: 88px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .message-section .message-card .message-lead {
+    font-size: 29px !important;
+    line-height: 1.22 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .message-section .message-card .message-support {
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+    margin: 5px auto !important;
+  }
+
+  .message-section .message-card .final-line {
+    font-size: 16px !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* Short laptop */
+@media (min-width: 1024px) and (max-height: 650px) {
+  .message-section .message-card {
+    padding: 12px 45px 10px !important;
+  }
+
+  .message-section .message-memory-image {
+    width: 300px !important;
+    height: 68px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .message-section .message-card .message-lead {
+    font-size: 23px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .message-section .message-card .message-support {
+    font-size: 13px !important;
+    line-height: 1.22 !important;
+    margin: 3px auto !important;
+  }
+
+  .message-section .message-card .final-line {
+    font-size: 14px !important;
+    margin-top: 5px !important;
+  }
+}
+
+
+/* =========================================================
+   GIFT — CINEMATIC SURPRISE REVEAL
+   ========================================================= */
+
+.gift-section .gift-box {
+  cursor: pointer;
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    filter 0.45s ease,
+    opacity 0.35s ease;
+}
+
+.gift-section .gift-box:not(.opened):hover {
+  transform: translateY(-10px) scale(1.04);
+  filter: brightness(1.12);
+}
+
+.gift-section .gift-box:not(.opened):active {
+  transform: translateY(-3px) scale(.98);
+}
+
+.gift-section .gift-box.opened {
+  transform: translateY(-18px) scale(1.05);
+  filter: brightness(1.18);
+}
+
+.gift-section .gift-box.opened .gift-lid {
+  animation: gift-lid-surprise 0.9s cubic-bezier(.17,.84,.44,1) forwards;
+}
+
+.gift-section .gift-box.opened .gift-glow {
+  animation: gift-surprise-glow 1.4s ease-out forwards;
+}
+
+.gift-section .gift-box.opened .gift-emoji {
+  animation: gift-emoji-pop 0.8s cubic-bezier(.17,.84,.44,1) 0.15s both;
+}
+
+.gift-section .gift-label {
+  transition: opacity 0.25s ease;
+  letter-spacing: .16em;
+}
+
+.gift-section .gift-open-label {
+  position: absolute;
+  left: 50%;
+  bottom: -48px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  color: #f3a6ff;
+  text-shadow: 0 0 18px rgba(211, 83, 255, .75);
+  animation: gift-surprise-label .7s ease-out both;
+}
+
+.gift-section .gift-message {
+  max-width: 700px !important;
+  padding: 24px 34px !important;
+  animation: gift-message-reveal .8s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.gift-section .gift-message p {
+  margin: 8px auto !important;
+  line-height: 1.45 !important;
+}
+
+.gift-section .gift-message strong {
+  display: block;
+  margin-top: 14px;
+  font-size: 18px;
+  color: #e7a5ff;
+  text-shadow: 0 0 16px rgba(208, 82, 255, .55);
+}
+
+.gift-section .gift-next {
+  animation: gift-next-reveal .65s ease-out .35s both;
+}
+
+@keyframes gift-lid-surprise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  45% {
+    transform: translateY(-34px) rotate(-5deg);
+  }
+
+  100% {
+    transform: translateY(-22px) rotate(-3deg);
+  }
+}
+
+@keyframes gift-surprise-glow {
+  0% {
+    opacity: .35;
+    transform: scale(.8);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+
+  100% {
+    opacity: .65;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gift-emoji-pop {
+  0% {
+    opacity: 0;
+    transform: scale(.3) translateY(20px);
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes gift-surprise-label {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes gift-message-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gift-next-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   GIFT MESSAGE — SHOW COMPLETE REVEAL
+   ========================================================= */
+
+.gift-section .stage-animation {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: visible !important;
+}
+
+.gift-section .gift-message {
+  position: relative !important;
+  width: min(760px, 88vw) !important;
+  min-height: 190px !important;
+  height: auto !important;
+  max-height: none !important;
+
+  box-sizing: border-box !important;
+  padding: 24px 42px 22px !important;
+  margin: 8px auto 0 !important;
+
+  overflow: visible !important;
+  text-align: center !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+}
+
+.gift-section .gift-message .simple-icon {
+  display: block !important;
+  flex-shrink: 0 !important;
+  margin-bottom: 2px !important;
+}
+
+.gift-section .gift-message h3 {
+  margin: 0 0 5px !important;
+  font-size: clamp(19px, 1.7vw, 25px) !important;
+  line-height: 1.2 !important;
+}
+
+.gift-section .gift-message p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 680px !important;
+
+  margin: 4px auto !important;
+  padding: 0 !important;
+
+  font-size: clamp(14px, 1.1vw, 17px) !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+
+.gift-section .gift-message strong {
+  display: block !important;
+  margin: 7px auto 0 !important;
+
+  font-size: clamp(16px, 1.35vw, 20px) !important;
+  line-height: 1.2 !important;
+}
+
+.gift-section .gift-next {
+  position: relative !important;
+  z-index: 50 !important;
+  margin-top: 18px !important;
+}
+
+/* Laptop */
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .gift-section .gift-message {
+    width: min(720px, 86vw) !important;
+    min-height: 175px !important;
+    padding: 18px 34px 16px !important;
+    margin-top: 5px !important;
+    gap: 3px !important;
+  }
+
+  .gift-section .gift-message h3 {
+    font-size: 21px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .gift-section .gift-message p {
+    font-size: 14px !important;
+    line-height: 1.28 !important;
+    margin: 3px auto !important;
+  }
+
+  .gift-section .gift-message strong {
+    font-size: 17px !important;
+    margin-top: 5px !important;
+  }
+
+  .gift-section .gift-next {
+    margin-top: 12px !important;
+  }
+}
+
+/* Short laptop */
+@media (min-width: 1024px) and (max-height: 650px) {
+
+  .gift-section .gift-message {
+    min-height: 145px !important;
+    padding: 12px 28px 10px !important;
+  }
+
+  .gift-section .gift-message h3 {
+    font-size: 18px !important;
+  }
+
+  .gift-section .gift-message p {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    margin: 2px auto !important;
+  }
+
+  .gift-section .gift-message strong {
+    font-size: 15px !important;
+    margin-top: 3px !important;
+  }
+
+  .gift-section .gift-next {
+    margin-top: 8px !important;
+  }
+}
+
+
+/* =========================================================
+   GIFT SCREEN — CINEMATIC REFERENCE DESIGN
+   ========================================================= */
+
+.gift-section {
+  position: relative !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  overflow: hidden !important;
+  padding: 42px 24px 28px !important;
+}
+
+/* ---------- Heading ---------- */
+
+.gift-section .section-heading {
+  position: relative !important;
+  z-index: 10 !important;
+
+  width: 100% !important;
+  text-align: center !important;
+
+  margin: 0 auto !important;
+}
+
+.gift-section .section-heading .small-caps {
+  margin: 0 0 12px !important;
+
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: .28em !important;
+
+  color: #c99aff !important;
+
+  text-shadow:
+    0 0 16px rgba(186, 91, 255, .55) !important;
+}
+
+.gift-section .section-heading h2 {
+  margin: 0 !important;
+
+  font-size: clamp(42px, 4vw, 64px) !important;
+  line-height: 1.05 !important;
+  font-weight: 500 !important;
+
+  text-align: center !important;
+}
+
+.gift-section .section-heading > p:last-child {
+  margin: 14px 0 0 !important;
+
+  font-size: 18px !important;
+  line-height: 1.4 !important;
+
+  color: rgba(210, 205, 225, .55) !important;
+}
+
+/* ---------- Gift ---------- */
+
+.gift-section .gift-box {
+  position: relative !important;
+  z-index: 20 !important;
+
+  width: 170px !important;
+  height: 150px !important;
+
+  margin: 72px auto 0 !important;
+
+  flex-shrink: 0 !important;
+
+  transform-origin: center bottom !important;
+}
+
+/* Glow behind gift */
+
+.gift-section .gift-glow {
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 50% !important;
+
+  width: 270px !important;
+  height: 270px !important;
+
+  transform: translate(-50%, -50%) !important;
+
+  border-radius: 50% !important;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(181, 72, 255, .40) 0%,
+      rgba(132, 55, 255, .20) 32%,
+      rgba(90, 35, 180, .08) 55%,
+      transparent 72%
+    ) !important;
+
+  filter: blur(12px) !important;
+
+  pointer-events: none !important;
+}
+
+/* ---------- Message card ---------- */
+
+.gift-section .stage-animation {
+  position: relative !important;
+  z-index: 15 !important;
+
+  width: min(1000px, 90vw) !important;
+
+  margin: 20px auto 0 !important;
+
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  overflow: visible !important;
+}
+
+.gift-section .gift-message {
+  width: min(1000px, 90vw) !important;
+  min-height: 245px !important;
+
+  box-sizing: border-box !important;
+
+  margin: 0 auto !important;
+  padding: 30px 50px 26px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+
+  border-radius: 28px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35, 36, 52, .62),
+      rgba(16, 17, 28, .74)
+    ) !important;
+
+  border: 1px solid rgba(190, 180, 220, .22) !important;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, .38),
+    inset 0 1px 0 rgba(255, 255, 255, .04),
+    0 0 45px rgba(144, 58, 255, .08) !important;
+
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+
+  overflow: visible !important;
+}
+
+.gift-section .gift-message .simple-icon {
+  font-size: 25px !important;
+
+  margin-bottom: 7px !important;
+
+  color: #ffffff !important;
+
+  text-shadow:
+    0 0 18px rgba(255, 255, 255, .65) !important;
+}
+
+.gift-section .gift-message h3 {
+  margin: 0 0 10px !important;
+
+  font-family: Georgia, "Times New Roman", serif !important;
+
+  font-size: clamp(25px, 2vw, 31px) !important;
+  font-weight: 500 !important;
+
+  color: #ffffff !important;
+}
+
+.gift-section .gift-message p {
+  width: 100% !important;
+  max-width: 850px !important;
+
+  margin: 5px auto !important;
+
+  font-size: 17px !important;
+  line-height: 1.45 !important;
+
+  color: rgba(238, 235, 244, .82) !important;
+
+  text-align: center !important;
+}
+
+.gift-section .gift-message strong {
+  margin-top: 10px !important;
+
+  font-size: 23px !important;
+  line-height: 1.2 !important;
+
+  color: #e39aff !important;
+
+  text-shadow:
+    0 0 20px rgba(217, 88, 255, .55) !important;
+}
+
+/* ---------- Center NEXT ---------- */
+
+.gift-section .gift-next {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  z-index: 50 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 270px !important;
+  min-width: 270px !important;
+  height: 68px !important;
+  min-height: 68px !important;
+
+  margin: 24px auto 0 !important;
+
+  border-radius: 999px !important;
+
+  background:
+    linear-gradient(
+      100deg,
+      #9b35ff 0%,
+      #c53bff 45%,
+      #ef3f98 100%
+    ) !important;
+
+  border: 1px solid rgba(255,255,255,.14) !important;
+
+  box-shadow:
+    0 15px 45px rgba(176, 43, 255, .28),
+    0 0 28px rgba(211, 64, 255, .20) !important;
+
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  letter-spacing: .18em !important;
+
+  color: white !important;
+
+  transform: none !important;
+}
+
+.gift-section .gift-next span {
+  margin-left: 18px !important;
+
+  font-size: 25px !important;
+  font-weight: 400 !important;
+}
+
+.gift-section .gift-next:hover {
+  transform: translateY(-4px) scale(1.025) !important;
+
+  box-shadow:
+    0 20px 55px rgba(176, 43, 255, .38),
+    0 0 40px rgba(211, 64, 255, .28) !important;
+}
+
+/* =========================================================
+   LAPTOP / SHORT SCREEN
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 800px) {
+
+  .gift-section {
+    padding-top: 26px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .gift-section .section-heading .small-caps {
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .gift-section .section-heading h2 {
+    font-size: 42px !important;
+  }
+
+  .gift-section .section-heading > p:last-child {
+    margin-top: 9px !important;
+    font-size: 15px !important;
+  }
+
+  .gift-section .gift-box {
+    width: 145px !important;
+    height: 130px !important;
+
+    margin-top: 42px !important;
+  }
+
+  .gift-section .stage-animation {
+    margin-top: 12px !important;
+  }
+
+  .gift-section .gift-message {
+    min-height: 205px !important;
+    padding: 22px 38px 20px !important;
+    border-radius: 24px !important;
+  }
+
+  .gift-section .gift-message h3 {
+    font-size: 25px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .gift-section .gift-message p {
+    font-size: 14px !important;
+    line-height: 1.32 !important;
+    margin: 3px auto !important;
+  }
+
+  .gift-section .gift-message strong {
+    font-size: 20px !important;
+    margin-top: 7px !important;
+  }
+
+  .gift-section .gift-next {
+    width: 235px !important;
+    min-width: 235px !important;
+    height: 58px !important;
+    min-height: 58px !important;
+
+    margin-top: 14px !important;
+
+    font-size: 17px !important;
+  }
+}
+
+/* =========================================================
+   VERY SHORT LAPTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-height: 650px) {
+
+  .gift-section {
+    padding-top: 16px !important;
+  }
+
+  .gift-section .section-heading h2 {
+    font-size: 34px !important;
+  }
+
+  .gift-section .section-heading > p:last-child {
+    font-size: 13px !important;
+    margin-top: 5px !important;
+  }
+
+  .gift-section .gift-box {
+    width: 120px !important;
+    height: 108px !important;
+
+    margin-top: 25px !important;
+  }
+
+  .gift-section .stage-animation {
+    margin-top: 8px !important;
+  }
+
+  .gift-section .gift-message {
+    min-height: 165px !important;
+    padding: 14px 30px 12px !important;
+  }
+
+  .gift-section .gift-message .simple-icon {
+    font-size: 19px !important;
+  }
+
+  .gift-section .gift-message h3 {
+    font-size: 20px !important;
+  }
+
+  .gift-section .gift-message p {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+  }
+
+  .gift-section .gift-message strong {
+    font-size: 16px !important;
+    margin-top: 4px !important;
+  }
+
+  .gift-section .gift-next {
+    width: 205px !important;
+    min-width: 205px !important;
+    height: 50px !important;
+    min-height: 50px !important;
+
+    margin-top: 9px !important;
+
+    font-size: 15px !important;
+  }
+}
+
